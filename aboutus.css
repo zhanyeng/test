@@ -1,0 +1,85 @@
+body{
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to top,rgb(123, 215, 255), rgb(246, 255, 252));
+    }
+
+    .about-us{
+        text-align: center;
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+    .information, .information2 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .lian, .limbin, .sadra, .lau{
+ 
+        max-width: 400px;
+        min-height: 500px;
+        margin: 40px;
+        border: 1px solid #000000;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 1);
+        background-color: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+        width: 100%;
+        flex: 1;
+    }
+
+    .name-row , .position-row {
+        display: flex;
+        gap: 10px;
+        align-items: baseline;
+        justify-content: center;
+    }
+
+    .lianpicture, .limbinpicture, .sadrapicture, .laupicture{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #000000;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .lianpicture:hover, .limbinpicture:hover, .sadrapicture:hover, .laupicture:hover {
+        transform: scale(1.05);
+        transition: transform 0.5s ease;
+    }
+
+    .lianpicture img, .limbinpicture img, .sadrapicture img, .laupicture img {
+        max-width: 100%;
+        display: block;
+    }
+    .whatsapp-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: auto;
+    }
+    .whatsapp-icon{
+        border-radius: 50%;
+        overflow: hidden;
+        width: 40px;
+        height: 40px;
+    }
