@@ -1,0 +1,181 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to top, rgb(123, 215, 255), rgb(246, 255, 252));
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+}
+
+.dashboard, .welcome,.jc,.j {
+    color: #444444;
+    margin-left: 6%;
+}
+.dashboard { margin-top: 4%; }
+.ac { color: #333333; }
+.content1 { color: #444444; }
+.usagebox,.joinedchallenges {
+    margin: 20px 6% 40px;
+    overflow-x: auto;
+}
+.a{margin-left: 6%;}
+.usagetable,.jct {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.top {
+    background: linear-gradient(135deg, #4fb2fd, #1a8fe3);
+    color: white;
+}
+
+.usagetable th,.jct th {
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.usagetable td,.jct td {
+    padding: 12px 18px;
+    font-size: 14px;
+    color: #444;
+    border-bottom: 1px solid #e8f4ff;
+}
+
+
+.challengebox {
+    margin: 0 6%;
+}
+
+.cardlist {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 4%;
+    margin-left: 5%;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-left: 5px solid #4fb2fd;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(79, 178, 253, 0.2);
+}
+
+.carddesc {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.cardinfo {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 5px;
+}
+#addc{
+    margin-left:5% ;
+}
+.add{
+    margin-top:40px;
+}
+
+.record-content {
+    margin-left: 5%;
+    background: white;
+    border-radius: 16px;
+    padding: 36px 40px;
+    width: 81%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-top: 5px solid #4fb2fd;
+}
+
+.record-content h3 {
+    margin: 0 0 28px;
+    color: #333;
+    font-size: 20px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.input label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 6px;
+    text-transform: capitalize;
+}
+
+.input textarea,
+.input input[type="number"],
+.input input[type="date"] {
+    border: 1.5px solid #d0e8ff;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #333;
+    background: #f8fcff;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: Arial, sans-serif;
+    resize: vertical;
+}
+
+.input textarea:focus,
+.input input[type="number"]:focus,
+.input input[type="date"]:focus {
+    border-color: #4fb2fd;
+    box-shadow: 0 0 0 3px rgba(79, 178, 253, 0.15);
+    background: #fff;
+}
+
+.submitbtn {
+    margin-top: 8px;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #4fb2fd, #1a8fe3);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.submitbtn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.submitbtn:active {
+    transform: translateY(0);
+}
+@keyframes move {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}.dashboard,.welcome,.usagebox,.a {
+    animation: move 1.2s ease-out forwards;
+}

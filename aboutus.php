@@ -9,14 +9,17 @@
     <link rel="stylesheet" href="aboutus.css">
 
 <body>
-    <?php include 'header.php'; ?>
+    <div class="header">
+        <h2 class="logo">Voltcampus</h2>
+    </div>
+
     <h1 class="about-us">About Us</h1>
 
     <div class="information">
         <div class="lian">
             <div class="card-body">
                 <div class="lianpicture">
-                    <img src="lian.jpg" alt="Lian's Picture" width="150">
+                    <img src="lian.jpg.jpeg" alt="Lian's Picture" width="150">
                 </div>
 
                 <div class="name-row">  <!-- name, position -->
@@ -49,9 +52,9 @@
                 </div>
                 <div class="position-row">
                     <h2>Position: </h2>
-                    <h3>Back-end Developer (Student Systems)</h3>
+                    <h3>Back-end Developer</h3>
                 </div>
-                <p>About me : I specialize in developing the student engagement module, focusing on energy tracking and point-based reward systems. My goal is to make sustainability a rewarding experience for every student on campus.</p>
+                <p>About me: I focus on website development, and I hope that website users can effectively reduce their electricity consumption through this website, thus contributing to the protection of our planet.</p>
                 <div class="whatsapp-link">
                     <div class="whatsapp-icon">
                         <img src="whatsapp.png" alt="WhatsApp Icon" width="40">
@@ -91,7 +94,7 @@
         <div class="lau">
             <div class="card-body">
                 <div class="laupicture">
-                    <img src="lau.jpg" alt="Lau's Picture" width="150">
+                    <img src="lau.jpg.jpeg" alt="Lau's Picture" width="150">
                 </div>
                 <div class="name-row">  <!-- name, position -->
                     <h2>Name :</h2>
@@ -113,5 +116,8 @@
             </div>
         </div>
     </div>
+    <?php
+        include 'footer.php';
+        ?>
 </body>
 </html>

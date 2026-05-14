@@ -12,7 +12,7 @@
 
     .header-content{
         background-color: #4fb2fd;
-        border: 1px solid #000000;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     }
 
     .logo {
@@ -23,9 +23,19 @@
         color: #ffffff;
     }
 
+    .home{
+        margin-left: 10px;
+        color: #ffffff;
+    }
+   
 </style>
 
-<header>
-    <div class="header-content">
-        <h2 class="logo">Voltcampus</h2>
-    </div>
+<div class="header">
+        <div class="header-content">
+            <h2 class="logo">Voltcampus</h2>
+            
+            <div class="home">
+                <a href = "homepage.php">Home</a>
+            </div>
+        </div>
+</div>
