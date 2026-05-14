@@ -12,6 +12,19 @@ $conn = mysqli_connect($servername, $username_db, $password_db, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+if (isset($_POST['room_number'])) {
+    $room = $_POST['room_number'];
+    $dorm_block = $_POST['dorm_block'];
+    $date = $_POST['record_date'];
+    $sql = "UPDATE electric_usage SET remind = 1 
+            WHERE room_number = '$room' 
+            AND dorm_block = '$dorm_block'
+            AND record_date = '$date'
+    ";
+    mysqli_query($conn, $sql);
+    echo "<script>alert('Remind has been sent to Admin'); window.location.href='managewastedelectricity.php';</script>";
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,23 +61,19 @@ if (!$conn) {
                         <td><?php echo $row3['record_date']; ?></td>
                         <td>
                             <?php
-                            $checkalert = mysqli_query($conn, "SELECT * FROM electric_usage WHERE alert_level = 1 AND room_number = '$row3[room_number]' AND dorm_block = '$row3[dorm_block]'");
+                            $checkalert = mysqli_query($conn, "SELECT * FROM electric_usage WHERE alert_level = 1 AND room_number = '$row3[room_number]' AND dorm_block = '$row3[dorm_block]' AND record_date = '$row3[record_date]'");
+                            $checkremind = mysqli_query($conn, "SELECT * FROM electric_usage WHERE remind = 1 AND room_number = '$row3[room_number]' AND dorm_block = '$row3[dorm_block]' AND record_date = '$row3[record_date]'");
                             if(mysqli_num_rows($checkalert) > 0): ?>
                                 <button class="alertsent" disabled>Alert Sent</button>
+                            <?php elseif(mysqli_num_rows($checkremind) > 0): ?>
+                                <button class="alertsent" disabled>Remind has been sent to Admin</button>
                             <?php else: ?>
                                 <form action="" method="post">
-                                    <input type="hidden" name="room_number" value="<?php echo $row3['room_number']; ?>">
+                                    <input type="hidden" name="room_number"  value="<?php echo $row3['room_number']; ?>">
                                     <input type="hidden" name="dorm_block" value="<?php echo $row3['dorm_block']; ?>">
+                                    <input type="hidden" name="record_date"  value="<?php echo $row3['record_date']; ?>">
                                     <button class="remindbutton" type="submit">Remind Admin to Alert</button>
-                                    <?php                                    
-                                    $sql = "UPDATE electric_usage SET remind = 1 
-                                    WHERE room_number = '$row3[room_number]' 
-                                    AND dorm_block = '$row3[dorm_block]'
-                                    order by record_date DESC
-                                    LIMIT 1";
 
-                                    mysqli_query($conn, $sql);
-                                    ?>
                                 </form>
                             <?php endif; ?>
                         </td>
@@ -75,6 +84,27 @@ if (!$conn) {
                 <?php endwhile; ?>
             </table>
     </div>
+    <hr>
+    <div class="usagebox">
+        <table class = 'usagetable'>
+            <tr class="top">
+                <th>Block</th>
+                <th>Total Usage (kWh)</th>
+            </tr>
+            <?php
+                $block_usage = mysqli_query($conn, "SELECT dorm_block, SUM(usage_kwh) as total_usage FROM electric_usage WHERE record_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) GROUP BY dorm_block");
+                while ($row = mysqli_fetch_assoc($block_usage)):
+            ?>
+            <tr>
+                <td><?php echo $row['dorm_block']; ?></td>
+                <td><?php echo $row['total_usage']; ?> kWh</td>
+            </tr>
+            <?php endwhile; ?>
+
+        </table>
+
+    </div>
+    <?php include 'footer.php' ?>
     
 </body>
 </html>
