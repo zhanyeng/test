@@ -167,6 +167,18 @@ body {
 .submitbtn:active {
     transform: translateY(0);
 }
+.alertbutton{
+    background-color: #8fc8f1;
+    border-radius: 25px;
+    width: 120px;
+    height: 40px;
+    color: white;
+}
+.alertbutton:hover {
+    background-color: #4fb2fd;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;}
 @keyframes move {
     from {
         opacity: 0;

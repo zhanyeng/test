@@ -42,6 +42,7 @@ if (!$conn) {
                     <th>Student Name</th>
                     <th>Usage (kWh)</th>
                     <th>Date</th>
+                    <th>Send Alert</th>
                 </tr>
                 <?php
                     $allusage = mysqli_query($conn, "SELECT * FROM electric_usage ORDER BY record_date DESC");
@@ -55,6 +56,13 @@ if (!$conn) {
                         <td><?php echo $row3['username']; ?></td>
                         <td style="color: red;"><?php echo $row3['usage_kwh']; ?> kWh</td>
                         <td><?php echo $row3['record_date']; ?></td>
+                        <td>
+                            <form action="sendalertfunction.php" method="post">
+                                <input type="hidden" name="room_number" value="<?php echo $row3['room_number']; ?>">
+                                <input type="hidden" name="dorm_block" value="<?php echo $row3['dorm_block']; ?>">
+                                <button class="alertbutton" type="submit">Send Alert</button>
+                            </form>
+                        </td>
                     <?php endif; ?>
                     
                 </tr>
