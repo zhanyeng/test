@@ -168,7 +168,7 @@ $current_user = $_SESSION['username'] ?? 'Guest';
 
     <?php elseif ($role == 'admin'): ?>
         <a href="adminpage.php">Dashboard</a>
-        <a href="#energy">Send Alert</a>
+        <a href="sendalertpage.php">Send Alert</a>
         <a href="#settings">Settings</a>
         <a href="homepage.php" style="color: #ff4d4d;">Logout</a>
 
