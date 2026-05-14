@@ -136,6 +136,18 @@ body {
     font-family: Arial, sans-serif;
     resize: vertical;
 }
+.voucher{
+    border: 1.5px solid #d0e8ff;
+    height: 30px;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #333;
+    background: #f8fcff;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: Arial, sans-serif;
+}
 
 .input textarea:focus,
 .input input[type="number"]:focus,
