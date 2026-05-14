@@ -21,8 +21,8 @@ if (isset($_POST['confirm']) && $_POST['confirm'] == 1) {
     $description = $_POST['description']; // 获取描述信息
     $username = $_POST['username'];
     $update = "UPDATE electric_usage 
-               SET alert_level = 1
-               SET alert_description = '$description'
+               SET alert_level = 1,
+               alert_description = '$description'
                WHERE username = '$username' 
                AND room_number = '$room_number' 
                AND dorm_block = '$dorm_block'
@@ -114,7 +114,7 @@ $row = mysqli_fetch_assoc($result);
         }
 
         .btn-row {
-            display: flex;
+            display: grid;
             gap: 15px;
         }
 
@@ -147,6 +147,10 @@ $row = mysqli_fetch_assoc($result);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
+        }
+        .description{
+            width: 100%;
+
         }
 
         .cancelbtn:hover {
@@ -188,11 +192,7 @@ $row = mysqli_fetch_assoc($result);
                 Sending an alert will notify <span><?php echo $row['username']; ?></span> 
                 to reduce their energy consumption.
             </div>
-            <div class="description-box">
-                <p>Description:</p>
-                <textarea id="description" name="description" rows="4" cols="50" placeholder="Enter alert description..."></textarea>`
-
-            </div>
+            
 
             <div class="btn-row">
                 <!-- Confirm 按钮：把所有资料传回同一个页面处理 -->
@@ -201,11 +201,20 @@ $row = mysqli_fetch_assoc($result);
                     <input type="hidden" name="dorm_block"  value="<?php echo $row['dorm_block']; ?>">
                     <input type="hidden" name="username"    value="<?php echo $row['username']; ?>">
                     <input type="hidden" name="confirm"     value="1">
-                    <button class="confirmbtn" type="submit">Confirm Send Alert</button>
-                </form>
+                    <div class="description-box">
+                        <p>Description:</p>
+                        <textarea class='description' id="description" name="description" rows="4" cols="50" placeholder="Enter alert description..."></textarea>
+                    </div>
+                        <div>
 
                 <!-- Cancel 按钮：回到 staffpage -->
-                <a href="sendalertpage.php" class="cancelbtn">Cancel</a>
+                            <button class="confirmbtn" type="submit">Confirm Send Alert</button>
+
+                            <a href="sendalertpage.php" class="cancelbtn">Cancel</a>
+                        </div>
+                    
+                </form>
+                
             </div>
         </div>
     </div>
