@@ -1,46 +1,50 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$username_db = "root";
-$password_db = "";
-$dbname = "assignment";
+$conn = mysqli_connect("localhost", "root", "", "assignment");
+if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
-$conn = mysqli_connect($servername, $username_db, $password_db, $dbname);
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+// 从列表页点击 Send Alert 进来，存入 session
+if (isset($_POST['from_list']) && $_POST['from_list'] == 1) {
+    $_SESSION['room'] = $_POST['room'];
+    $_SESSION['block'] = $_POST['block'];
+    $_SESSION['date'] = $_POST['date'];
+    $_SESSION['student'] = $_POST['student'];
+    $_SESSION['kwh'] = $_POST['kwh'];
 }
 
-// 接收从按钮传过来的资料
-$room_number = $_POST['room_number'];
-$dorm_block  = $_POST['dorm_block'];
-
-// 如果按了 Confirm，更新 alert_level 然后跳回
+// 按了 Confirm 按钮，写入数据库
 if (isset($_POST['confirm']) && $_POST['confirm'] == 1) {
-    $description = $_POST['description']; // 获取描述信息
-    $username = $_POST['username'];
-    $update = "UPDATE electric_usage 
-               SET alert_level = 1,
-               alert_description = '$description'
-               WHERE username = '$username' 
-               AND room_number = '$room_number' 
-               AND dorm_block = '$dorm_block'
-               ORDER BY record_date DESC 
-               LIMIT 1";
-    mysqli_query($conn, $update);
-    echo "<script>alert('Alert sent to $username !'); window.location.href='sendalertpage.php';</script>";
+    $desc = mysqli_real_escape_string($conn, $_POST['desc']);
+    $room = $_SESSION['room'];
+    $block = $_SESSION['block'];
+    $date = $_SESSION['date'];
+    $student = $_SESSION['student'];
+
+    $sql = "UPDATE electric_usage 
+            SET alert_level = 1, alert_description = '$desc'
+            WHERE username = '$student' 
+            AND room_number = '$room' 
+            AND dorm_block = '$block'
+            AND record_date = '$date'";
+
+    $done= mysqli_query($conn, $sql);
+
+    if ($done) {
+        echo "<script>alert('Alert sent to $student !'); window.location.href='sendalertpage.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong, please try again.');</script>";
+    }
     exit();
 }
 
-// 用 room_number 和 dorm_block 查询最新那一条记录
-$sql = "SELECT * FROM electric_usage 
-        WHERE room_number = '$room_number' AND dorm_block = '$dorm_block' 
-        ORDER BY record_date DESC 
-        LIMIT 1";
+// 从 session 拿数据显示页面
+$room = $_SESSION['room'] ?? '';
+$block = $_SESSION['block'] ?? '';
+$date = $_SESSION['date'] ?? '';
+$student = $_SESSION['student'] ?? '';
+$kwh = $_SESSION['kwh'] ?? '';
 
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
@@ -148,13 +152,29 @@ $row = mysqli_fetch_assoc($result);
             display: inline-flex;
             align-items: center;
         }
-        .description{
-            width: 100%;
 
+        .description {
+            width: 100%;
         }
 
         .cancelbtn:hover {
             background-color: #888;
+        }
+
+        .description-box {
+            margin-bottom: 15px;
+        }
+
+        .description-box p {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #1a2a44;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
         }
     </style>
 </head>
@@ -178,43 +198,34 @@ $row = mysqli_fetch_assoc($result);
                     <th>Date</th>
                 </tr>
                 <tr>
-                    <td><?php echo $row['dorm_block']; ?></td>
-                    <td><?php echo $row['room_number']; ?></td>
-                    <td><?php echo $row['username']; ?></td>
-                    <td class="high-usage"><?php echo $row['usage_kwh']; ?> kWh</td>
-                    <td><?php echo $row['record_date']; ?></td>
+                    <td><?php echo $block; ?></td>
+                    <td><?php echo $room; ?></td>
+                    <td><?php echo $student; ?></td>
+                    <td class="high-usage"><?php echo $kwh; ?> kWh</td>
+                    <td><?php echo $date; ?></td>
                 </tr>
             </table>
 
-
             <div class="warning-box">
                 This student's electricity usage exceeds <span>20 kWh</span>. 
-                Sending an alert will notify <span><?php echo $row['username']; ?></span> 
+                Sending an alert will notify <span><?php echo $student; ?></span> 
                 to reduce their energy consumption.
             </div>
-            
 
             <div class="btn-row">
-                <!-- Confirm 按钮：把所有资料传回同一个页面处理 -->
                 <form action="sendalertfunction.php" method="post">
-                    <input type="hidden" name="room_number" value="<?php echo $row['room_number']; ?>">
-                    <input type="hidden" name="dorm_block"  value="<?php echo $row['dorm_block']; ?>">
-                    <input type="hidden" name="username"    value="<?php echo $row['username']; ?>">
-                    <input type="hidden" name="confirm"     value="1">
+                    <input type="hidden" name="confirm" value="1">
+
                     <div class="description-box">
                         <p>Description:</p>
-                        <textarea class='description' id="description" name="description" rows="4" cols="50" placeholder="Enter alert description..."></textarea>
+                        <textarea class="description" name="desc" rows="4" placeholder="Enter alert description..."required></textarea>
                     </div>
-                        <div>
 
-                <!-- Cancel 按钮：回到 staffpage -->
-                            <button class="confirmbtn" type="submit">Confirm Send Alert</button>
-
-                            <a href="sendalertpage.php" class="cancelbtn">Cancel</a>
-                        </div>
-                    
+                    <div class="btn-group">
+                        <button class="confirmbtn" type="submit">Confirm Send Alert</button>
+                        <a href="sendalertpage.php" class="cancelbtn">Cancel</a>
+                    </div>
                 </form>
-                
             </div>
         </div>
     </div>
