@@ -1,7 +1,18 @@
 <?php
 session_start();
-?>
+$user  = $_SESSION['username'] ?? 'Guest';
+///////////////////////cannect database///////////////
+$servername = "localhost";
+$username_db = "root";
+$password_db = "";
+$dbname = "assignment"; 
 
+$conn = mysqli_connect($servername, $username_db, $password_db, $dbname);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
