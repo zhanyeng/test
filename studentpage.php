@@ -119,7 +119,7 @@ $mypoints = $studentpointsrow['points'] ?? 0;
 
     <hr ><br><br>
     <div class="content2">
-        <h2 class="energyuse" id="energy">Energy use</h2>
+        <h2 class="energyuse" id="energy">⚡Energy use</h2>
         <p class="recorddaily">Record your daily energy use</p>
     </div>
 
@@ -188,7 +188,7 @@ $mypoints = $studentpointsrow['points'] ?? 0;
 
 
 <div id="challenges" class="challengebox">
-        <h2 class="energyuse">challenges</h2>
+        <h2 class="energyuse">🎯challenges</h2>
         <p class="recorddaily">The challenges that available to join now</p>
 
     <div class="cardlist">
@@ -248,7 +248,7 @@ $mypoints = $studentpointsrow['points'] ?? 0;
 <br><br><hr>
 
 <div id="pointstore" class="pointstorebox">
-    <h2 class="energyuse">Point Store</h2>
+    <h2 class="energyuse">🎁Point Store</h2>
     <p class="recorddaily">My Points : <?php echo $mypoints; ?></p>
 
     <div class="cardlist">
