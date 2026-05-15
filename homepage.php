@@ -1,3 +1,19 @@
+<?php
+session_start();
+$user  = $_SESSION['username'] ?? 'Guest';
+///////////////////////cannect database///////////////
+$servername = "localhost";
+$username_db = "root";
+$password_db = "";
+$dbname = "assignment"; 
+
+$conn = mysqli_connect($servername, $username_db, $password_db, $dbname);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +77,54 @@
             <p>Earn points and rewards for your eco-friendly actions and achievements.</p>
         </div>
     </div>
+    <?php
+        $conn = mysqli_connect("localhost", "root", "", "assignment");
+        $leaderboard = mysqli_query($conn, "
+            SELECT dorm_block, room_number, SUM(usage_kwh) AS total_kwh
+            FROM electric_usage
+            WHERE record_date BETWEEN '" . date('Y-m-d', strtotime('monday last week')) . "'AND '" . date('Y-m-d', strtotime('sunday last week')) . "'
+            GROUP BY dorm_block, room_number
+            ORDER BY total_kwh ASC LIMIT 3
+        ");
+        $medals = ['🥇','🥈','🥉'];
+        $i = 0;
+        ?>
 
+        <div class="function">
+            <h2>🏆Electric Usage Rank</h2>
+            <p>less usage top3</p>
+        </div>
+
+        <div class="second-content">
+            <?php while ($row = mysqli_fetch_assoc($leaderboard)): ?>
+            <div class="Electricity-consumption" style="text-align:center;">
+                <p style="font-size:2.5rem;margin:0;"><?= $medals[$i++] ?></p>
+                <h3><?= $row['dorm_block'] ?></h3>
+                <p>Room <?= $row['room_number'] ?></p>
+                <p><?= number_format($row['total_kwh'], 1) ?> kWh</p>
+            </div>
+        <?php endwhile; ?>
+    </div>
+
+    <?php
+        $vouchers = mysqli_query($conn, "SELECT * FROM voucher LIMIT 3");
+    ?>
+    
+    <div class="function">
+        <h2>Available Vouchers</h2>
+        <p>Redeem your points for exciting rewards</p>
+    </div>
+                
+    <div class="second-content">
+        <?php while ($row = mysqli_fetch_assoc($vouchers)): ?>
+        <div class="Electricity-consumption" style="text-align:center;">
+            <p style="font-size:2.5rem;margin:0;">🎁</p>
+            <h3 style="color:#333;margin:10px 0 5px;"><?= $row['store_name'] ?></h3>
+            <p style="color:#444;"><?= $row['description'] ?></p>
+            <p style="color:#444;">Discount: <?= $row['discount'] ?></p>
+        </div>
+        <?php endwhile; ?>
+    </div>
     <?php
         include 'footer.php';
     ?>
