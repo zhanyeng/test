@@ -151,7 +151,7 @@ $mypoints = $studentpointsrow['points'] ?? 0;
                     <?php if (mysqli_num_rows($records) > 0): ?>
                         <?php while ($row = mysqli_fetch_assoc($records)): ?>
                             <tr>
-                                <td><?php echo $row['record_date']; ?></td>
+                                <td>📅<?php echo $row['record_date']; ?></td>
                                 <td><?php echo $row['usage_kwh']; ?></td>
                             </tr>
                         <?php endwhile; ?>
