@@ -173,7 +173,7 @@ body {
         opacity: 1;
         transform: translateX(0);
     }
-}.content ,.energyuse,.recorddaily{
+}.content ,.energyuse,.recorddaily,.alert-reminder{
     animation: word 0.8s ease-out;
 }
 
@@ -270,3 +270,56 @@ body {
     font-weight: bold;
     font-size: 14px;
 }
+
+
+/* alert information*/
+.alert-reminder {
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-left: 5px solid #f39c12;
+    max-height: 230px;      
+    overflow-y: auto;       
+}
+.alert-reminder h4 {
+    margin: 0 0 10px 0;
+    color: #e67e22;
+    font-size: 16px;
+}
+.alert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.alert-information {
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 8px;
+}
+.alert-information:last-child {
+    border-bottom: none;
+}
+.alert-date {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 13px;
+}
+.alert-usage {
+    color: #e67e22;
+    font-size: 14px;
+    margin: 4px 0;
+}
+.alert-desc {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.4;
+    word-break: break-word;
+}
+.no-alert {
+    color: #27ae60;
+    font-size: 13px;
+    text-align: center;
+    padding: 10px 0;
+}
+

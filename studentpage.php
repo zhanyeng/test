@@ -164,22 +164,51 @@ $mypoints = $studentpointsrow['points'] ?? 0;
             </div>
         </div>
 
-        <div class="recordusage">
-            <div class="record-content">
-                <h3>Record Usage</h3>
-                <form method="POST" action="">
-                    <div class="input">
-                        <label>📅Date</label>
-                        <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" required>
-                    </div>
-                    <div class="input">
-                        <label>⚡Usage (kWh)</label>
-                        <input type="number" name="usage" step="0.01" min="0" placeholder="e.g. 3.50" required>
-                    </div>
-                    <button type="submit" class="submitbtn">Submit</button>
-                </form>
+<div class="recordusage">
+    <div class="record-content">
+        <h3>Record Usage</h3>
+        <form method="POST" action="">
+            <div class="input">
+                <label>📅Date</label>
+                <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" required>
             </div>
-        </div>
+            <div class="input">
+                <label>⚡Usage (kWh)</label>
+                <input type="number" name="usage" step="0.01" min="0" placeholder="e.g. 3.50" required>
+            </div>
+            <button type="submit" class="submitbtn">Submit</button>
+        </form>
+    </div>
+
+    <?php
+    $sql = "SELECT record_date, usage_kwh, alert_description FROM electric_usage 
+                    WHERE username = '$user' 
+                    AND alert_level = 1 
+                    AND record_date >= DATE_ADD(CURDATE(), INTERVAL -WEEKDAY(CURDATE()) DAY)
+                    ORDER BY record_date DESC";
+    $alert_result = mysqli_query($conn, $sql);
+    ?>
+
+    <div class="alert-reminder">
+        <h4>⚠️ high usage(this week)</h4>
+        <hr>
+        <?php if (mysqli_num_rows($alert_result) > 0): ?>
+            <div class="alert-list">
+                <?php while ($alert = mysqli_fetch_assoc($alert_result)): ?>
+                    <div class="alert-information">
+                        <div class="alert-date">📅 <?php echo $alert['record_date']; ?></div>
+                        <div class="alert-usage">⚡ <?php echo $alert['usage_kwh']; ?> kWh</div>
+                        <div class="alert-desc">
+                            <?php echo "description : " . $alert['alert_description'] ?? "no description"?>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            </div>
+        <?php else: ?>
+            <p class="no-alert">✅ Well done,no high electric usage this week</p>
+        <?php endif; ?>
+    </div>
+</div> 
 
     </div><br><br><hr>
 
