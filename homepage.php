@@ -38,7 +38,7 @@ if (!$conn) {
         <div class="content1">
             <h1>Empowering Green Living in Dorms</h1>
             <br><br>
-            <p>Empower your sustainable lifestyle by tracking daily energy consumption and joining community challenges. Every kilowatt saved earns you points that can be redeemed for exclusive rewards, making green living both impactful and rewarding for every student.</p>
+            <p class="aaa">Empower your sustainable lifestyle by tracking daily energy consumption and joining community challenges. Every kilowatt saved earns you points that can be redeemed for exclusive rewards, making green living both impactful and rewarding for every student.<p>
             <div class="header-links">
                 <a href="signuppage.php" class="signup">Signup</a>
                 <a href="loginpage.php" class="login">Login</a>
@@ -79,7 +79,7 @@ if (!$conn) {
     </div>
 <br><hr>
 
-<h2 class="function">Track energy usage</h2>
+<h2 class="function">📌Track energy usage</h2>
 <BR>
 <BR>
 <div class="info-section">
@@ -111,7 +111,6 @@ if (!$conn) {
         </div>
         <div class="rank-steps">
             <?php
-            // 查询上周用电最少的前3名（与原逻辑一致）
             $leaderboard = mysqli_query($conn, "
                 SELECT dorm_block, room_number, SUM(usage_kwh) AS total_kwh
                 FROM electric_usage
@@ -148,8 +147,8 @@ if (!$conn) {
     ?>
     
     <div class="function">
-        <h2>Available Vouchers</h2>
-        <p>Earn your point via challenges and reedem the voucher</p>
+        <h2>Available Vouchers‼️</h2>
+        <p>Earn points through challenges and redeem coupons. Many more coupons await your discovery.</p>
     </div>
                 
     <div class="second-content">
