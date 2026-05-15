@@ -72,7 +72,7 @@ if (isset($_POST['room_number'])) {
                                     <input type="hidden" name="room_number"  value="<?php echo $row3['room_number']; ?>">
                                     <input type="hidden" name="dorm_block" value="<?php echo $row3['dorm_block']; ?>">
                                     <input type="hidden" name="record_date"  value="<?php echo $row3['record_date']; ?>">
-                                    <button class="remindbutton" type="submit">Remind Admin to Alert</button>
+                                    <button class="alertbutton" type="submit">Remind Admin to Alert</button>
 
                                 </form>
                             <?php endif; ?>
