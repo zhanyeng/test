@@ -18,6 +18,10 @@ body {
     margin: 20px 6% 40px;
     overflow-x: auto;
 }
+
+.al{
+    margin-left: 5%;
+}
 .a{margin-left: 6%;}
 .usagetable,.jct {
     width: 100%;
@@ -179,18 +183,43 @@ body {
 .submitbtn:active {
     transform: translateY(0);
 }
+.alertsent{
+    background-color: #adaeaf;
+    border-radius: 25px;
+    opacity: 30%;
+    width: 120px;
+    height: 40px;
+    color: white;
+}
 .alertbutton{
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.4);
+    border: 0PX solid #4fb2fd;
     background-color: #8fc8f1;
     border-radius: 25px;
     width: 120px;
     height: 40px;
     color: white;
 }
+.all{
+    display:flex;
+    width: auto;
+    margin-top: 5%;
+}
+.alertadmindashboard{
+    border: 1px solid #d0e8ff;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+.alertadmindashboard h3{
+    padding-top: 5%;
+    padding-right: 5%;
+}
 .alertbutton:hover {
     background-color: #4fb2fd;
     cursor: pointer;
     transform: scale(1.05);
     transition: transform 0.2s ease-in-out;}
+
 @keyframes move {
     from {
         opacity: 0;
@@ -200,6 +229,6 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-}.dashboard,.welcome,.usagebox,.a {
+}.dashboard,.welcome,.usagebox,.a ,.alertadmindashboard h3{
     animation: move 1.2s ease-out forwards;
 }

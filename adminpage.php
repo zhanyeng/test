@@ -27,15 +27,34 @@ if (!$conn) {
 </head>
 <body>
     <?php include 'userheader.php' ?>
-    <h1 class="dashboard">ADMIN DASHBOARD</H1>
-        <h4 class="welcome">Welcome back : <?php echo $user?>
-        <br><br>
-        <hr>
-        <br>
+    <div class="all">
+        <div class="al">
+            <h1 class="dashboard">ADMIN DASHBOARD</H1>
+            <h4 class="welcome">Welcome back : <?php echo $user?>
+        </div>    
+            <div class ="alertadmindashboard">
+                <?php
+                    $checkremind = mysqli_query($conn, "SELECT * FROM electric_usage WHERE remind = 1 ORDER BY record_date DESC");
+                    if (mysqli_num_rows($checkremind) > 0) {
+                        echo "<h3 style='color: orange;'>📩New reminder,please check the alert list‼️‼️‼️</h3>";
+                    } else {
+                        echo "<h3>No new reminder from staff, keep up the good work!</h3>";
+                    }
+                
+                ?>
+            </div>
+    </div>
 
+ <br><br>
+        <hr>
+        <br> 
         <h2 class="a" id="eu">Student Electric Usage</h2>
         <p class="a">all student energy usage</p>
         <br><br>
+       
+
+
+    
     <div class="usagebox">
             <table class="usagetable">
                 <tr class="top">
@@ -64,6 +83,7 @@ if (!$conn) {
                 <?php endwhile; ?>
             </table>
     </div>
+
  
     <?php include "footer.php"?>
 </body>

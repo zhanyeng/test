@@ -22,7 +22,7 @@ if (isset($_POST['confirm']) && $_POST['confirm'] == 1) {
     $student = $_SESSION['student'];
 
     $sql = "UPDATE electric_usage 
-            SET alert_level = 1, alert_description = '$desc'
+            SET alert_level = 1, alert_description = '$desc', remind = 0
             WHERE username = '$student' 
             AND room_number = '$room' 
             AND dorm_block = '$block'
