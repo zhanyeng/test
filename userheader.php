@@ -150,38 +150,38 @@ $current_user = $_SESSION['username'] ?? 'Guest';
 <div class="side-menu" id="sideMenu">
     <?php if($role == 'student'): ?>
         <h1 class="menu">MENU</h1>
-        <a href="studentpage.php">Dashboard</a>
-        <a href="#energy">Energy usage</a>
-        <a href="#challenges">challenges</a>
-        <a href="#mychallenges">my challenges</a>
-        <a href="#pointstore">point store</a>
-        <a href="homepage.php" style="color: #ff4d4d;">Logout</a>
+        <a href="studentpage.php">📊 Dashboard</a>
+        <a href="#energy">⚡ Energy usage</a>   
+        <a href="#challenges">🎯 Challenges</a>
+        <a href="#mychallenges">📌 My challenges</a>
+        <a href="#pointstore">🎁 Point store</a>
+        <a href="homepage.php" style="color: #ff4d4d;">🚪 Logout</a>
 
     <?php elseif ($role == 'staff'): ?>
         <h1 class="menu">MENU</h1>
-        <a href="staffpage.php">Dashboard</a>
-        <a href="#eu">energy usage</a>
-        <a href="#ac">available challenges</a>
-        <a href="#jc">joined challenges</a>
-        <a href="#addc">add challenge</a>
-        <a href="homepage.php" style="color: #ff4d4d;">Logout</a>
+        <a href="staffpage.php">📊Dashboard</a>
+        <a href="#eu">⚡ Energy usage</a>
+        <a href="#ac">🏆 Available challenges</a>
+        <a href="#jc">✅ Joined challenges</a>
+        <a href="#addc">➕ Add challenge</a>
+        <a href="homepage.php" style="color: #ff4d4d;">🚪Logout</a>
 
     <?php elseif ($role == 'admin'): ?>
         <h1 class="menu">MENU</h1>
-        <a href="adminpage.php">Dashboard</a>
-        <a href="sendalertpage.php">Send Alert</a>
-        <a href="publishvoucher.php">Publish Voucher</a>
-        <a href="#settings">Settings</a>
-        <a href="homepage.php" style="color: #ff4d4d;">Logout</a>
+        <a href="adminpage.php">🛠️ Dashboard</a>
+        <a href="sendalertpage.php">🔔 Send Alert</a>
+        <a href="publishvoucher.php">🎟️ Publish Voucher</a>
+        <a href="#settings">⚙️ Settings</a>
+        <a href="homepage.php" style="color: #ff4d4d;">🚪Logout</a>
 
     <?php elseif ($role == 'manager'): ?>
         <h1 class="menu">MENU</h1></a>
-        <a href="managerpage.php">Dashboard</a>
-        <a href="managewastedelectricity.php">Manage Wasted Electricity</a>
-        <a href="manageaccounts.php">Manage Accounts</a>
-        <a href="managechallenges.php">Manage Challenges</a>
-        <a href="managevouchers.php">Manage Vouchers</a>
-        <a href="homepage.php" style="color: #ff4d4d;">Logout</a>
+        <a href="managerpage.php">📊Dashboard</a>
+        <a href="managewastedelectricity.php">⚡ Manage Wasted Electricity</a>
+        <a href="manageaccounts.php">👥 Manage Accounts</a>
+        <a href="managechallenges.php">🏆 Manage Challenges</a>
+        <a href="managevouchers.php">🎁 Manage Vouchers</a>
+        <a href="homepage.php" style="color: #ff4d4d;">🚪Logout</a>
 
     <?php endif; ?>
 

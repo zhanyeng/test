@@ -50,8 +50,8 @@ if (!$conn) {
         </div>
     </div>
 
-    <h2 class="function">Function of this website</h2><br>
-    <hr>
+    <h2 class="function">📃Function of this website</h2><br>
+<BR>
     <div class=second-content>
         <div class ="Electricity-consumption">
             <div class="Electricity-consumption-image">
@@ -77,42 +77,79 @@ if (!$conn) {
             <p>Earn points and rewards for your eco-friendly actions and achievements.</p>
         </div>
     </div>
-    <?php
-        $conn = mysqli_connect("localhost", "root", "", "assignment");
-        $leaderboard = mysqli_query($conn, "
-            SELECT dorm_block, room_number, SUM(usage_kwh) AS total_kwh
-            FROM electric_usage
-            WHERE record_date BETWEEN '" . date('Y-m-d', strtotime('monday last week')) . "'AND '" . date('Y-m-d', strtotime('sunday last week')) . "'
-            GROUP BY dorm_block, room_number
-            ORDER BY total_kwh ASC LIMIT 3
-        ");
-        $medals = ['🥇','🥈','🥉'];
-        $i = 0;
-        ?>
+<br><hr>
 
-        <div class="function">
-            <h2>🏆Electric Usage Rank</h2>
+<h2 class="function">Track energy usage</h2>
+<BR>
+<BR>
+<div class="info-section">
+    <div class="info-box">
+        <div class="info-icon">📊</div>
+        <h3>Why Track Your Energy Usage?</h3>
+        <p>By recording your daily electricity consumption, you can clearly understand your energy habits, identify waste, and take action to save energy. Every 1 kWh saved reduces carbon emissions by approximately 0.5 kg — a real contribution to our planet.</p>
+    </div>
+    <div class="info-box2">
+        <div class="info-icon">📝</div>
+        <h3>How to Record?</h3>
+        <p>Log in and go to the Student Dashboard, click “Record Usage”, select the date and enter your daily electricity usage (kWh). The system will automatically calculate your weekly/monthly usage and provide energy-saving tips.</p>
+    </div>
+    <div class="info-box3">
+        <div class="info-icon">🎯</div>
+        <h3>Benefits of Tracking</h3>
+        <p>Accurate tracking helps you complete energy-saving challenges, earn points, and redeem vouchers. At the same time, the school can use aggregated data to optimize energy distribution and build a greener campus.</p>
+    </div>
+</div>
+<br>
+<hr>
+<br>
+
+<div class="rank-section">
+    <div class="rank-left">
+        <div class="rank-header">
+            <h2>🏆 Electric Usage Rank</h2>
             <p>less usage top3</p>
         </div>
-
-        <div class="second-content">
-            <?php while ($row = mysqli_fetch_assoc($leaderboard)): ?>
-            <div class="Electricity-consumption" style="text-align:center;">
-                <p style="font-size:2.5rem;margin:0;"><?= $medals[$i++] ?></p>
-                <h3><?= $row['dorm_block'] ?></h3>
-                <p>Room <?= $row['room_number'] ?></p>
-                <p><?= number_format($row['total_kwh'], 1) ?> kWh</p>
+        <div class="rank-steps">
+            <?php
+            // 查询上周用电最少的前3名（与原逻辑一致）
+            $leaderboard = mysqli_query($conn, "
+                SELECT dorm_block, room_number, SUM(usage_kwh) AS total_kwh
+                FROM electric_usage
+                WHERE record_date BETWEEN '" . date('Y-m-d', strtotime('monday last week')) . "' AND '" . date('Y-m-d', strtotime('sunday last week')) . "'
+                GROUP BY dorm_block, room_number
+                ORDER BY total_kwh ASC LIMIT 3
+            ");
+            $medals = ['🥇', '🥈', '🥉'];
+            $i = 0;
+            while ($row = mysqli_fetch_assoc($leaderboard)):
+            ?>
+            <div class="rank-card rank-<?php echo $i; ?>">
+                <div class="rank-medal"><?php echo $medals[$i]; ?></div>
+                <div class="rank-dorm"><?php echo $row['dorm_block']; ?></div>
+                <div class="rank-room">Room <?php echo $row['room_number']; ?></div>
+                <div class="rank-usage"><?php echo number_format($row['total_kwh'], 1); ?> kWh</div>
             </div>
-        <?php endwhile; ?>
+            <?php $i++; endwhile; ?>
+        </div>
     </div>
 
+    <div class="rank-right">
+        <div class="info-card">
+            <h3>💡 Why save electricity?</h3>
+            <p>Every save <strong>1 kWh</strong> Electricity consumption can be reduced by approximately <strong>0.5 kg</strong> Carbon emissions.</p>
+            <p>Dormitory electricity consumption ranking, <strong>updates Weekly. </strong>Let's strive to be pioneers in campus energy conservation!</p>
+            <a href="signuppage.php" class="info-btn">join chanllenges 🎯</a>
+        </div>
+    </div>
+</div>
+<br>
     <?php
         $vouchers = mysqli_query($conn, "SELECT * FROM voucher LIMIT 3");
     ?>
     
     <div class="function">
         <h2>Available Vouchers</h2>
-        <p>Redeem your points for exciting rewards</p>
+        <p>Earn your point via challenges and reedem the voucher</p>
     </div>
                 
     <div class="second-content">
