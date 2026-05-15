@@ -45,18 +45,18 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <hr>
         <br>
 
-        <h2 class="a" id="eu">Student Electric Usage</h2>
+        <h2 class="a" id="eu">⚡Student Electric Usage</h2>
         <p class="a">all student energy usage</p>
         <br><br>
 
         <div class="usagebox">
             <table class="usagetable">
                 <tr class="top">
-                    <th>Block</th>
-                    <th>Room Number</th>
-                    <th>Student Name</th>
-                    <th>Usage (kWh)</th>
-                    <th>Date</th>
+                    <th>🏢Block</th>
+                    <th>🚪Room Number</th>
+                    <th>👤Student Name</th>
+                    <th>⚡Usage (kWh)</th>
+                    <th>📅Date</th>
                 </tr>
                 <?php
                     $allusage = mysqli_query($conn, "SELECT * FROM electric_usage ORDER BY record_date DESC");
@@ -78,7 +78,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             </table>
         </div>
         <br><br><hr><br><br>
-        <h2 class="jc" id="jc">joined challenges</h2>
+        <h2 class="jc" id="jc">📌joined challenges</h2>
         <p class="j">The challenges that already joined</p>
         <div class="joinedchallenges">
             
@@ -110,7 +110,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         </div>
 
         <div id="challenges" class="challengebox">
-            <h2 class="ac" id="ac">Available Challenges</h2>
+            <h2 class="ac" id="ac">🎯Available Challenges</h2>
             <p class="content1">Join a challenge and earn points</p>
         </div>
 
@@ -129,7 +129,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <?php endwhile; ?>
     </div>
     <br><hr><br>
-    <h2 id="addc">Add new challenge</h2>
+    <h2 id="addc">✏️Add new challenge</h2>
     <div class="add">
         <div class="record-content">
             <h3>challenges</h3>

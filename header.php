@@ -1,16 +1,23 @@
 <style>
-    header, h2 {
+.header, h2 {
         margin: 0;
         padding: 0;
+        color: white;
     }
-
-    .header{
+    .header a{
+        margin-right: 15px;
+        color: white;
+        
+    }
+    .header {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center; 
+        
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif;
-    }
-
-    .header-content{
+        width: 100%;
         background-color: #4fb2fd;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     }
@@ -22,20 +29,10 @@
         font-weight: bold;
         color: #ffffff;
     }
-
-    .home{
-        margin-left: 10px;
-        color: #ffffff;
-    }
-   
 </style>
 
 <div class="header">
-        <div class="header-content">
             <h2 class="logo">Voltcampus</h2>
             
-            <div class="home">
                 <a href = "homepage.php">Home</a>
-            </div>
-        </div>
 </div>

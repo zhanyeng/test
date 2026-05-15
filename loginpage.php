@@ -41,16 +41,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['dormblock'] = "xxxxxx";
             }
         
-        echo "<script>alert('Welcome Student!'); window.location.href='studentpage.php';</script>";
+        echo "<script>alert('✅login succesful,Welcome Student!'); window.location.href='studentpage.php';</script>";
         }
         else if ($role == 'staff') {
-            echo "<script>alert('Welcome Staff!'); window.location.href='staffpage.php';</script>";
+            echo "<script>alert('✅login succesful, Welcome Staff!'); window.location.href='staffpage.php';</script>";
         } 
         else if ($role == 'admin') {
-            echo "<script>alert('Welcome Admin!'); window.location.href='adminpage.php';</script>";
+            echo "<script>alert('✅login succesful, Welcome Admin!'); window.location.href='adminpage.php';</script>";
         } 
         else if ($role == 'manager') {
-            echo "<script>alert('Welcome Manager!'); window.location.href='managerpage.php';</script>";
+            echo "<script>alert('✅login succesful,Welcome Manager!'); window.location.href='managerpage.php';</script>";
         }
     } else {
         echo "<script>alert('Invalid Username or Password!');</script>";

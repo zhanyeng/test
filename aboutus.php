@@ -9,10 +9,8 @@
     <link rel="stylesheet" href="aboutus.css">
 
 <body>
-    <div class="header">
-        <h2 class="logo">Voltcampus</h2>
-    </div>
-
+    <?php include "header.php"?>
+    <br><br>
     <h1 class="about-us">About Us</h1>
 
     <div class="information">
@@ -23,12 +21,12 @@
                 </div>
 
                 <div class="name-row">  <!-- name, position -->
-                    <h2>Name :</h2>
+                    <h2 style="color:#333;">Name :</h2>
                     <h3>Lian Hong Zhi</h3>
                 </div>
 
                 <div class="position-row">
-                    <h2>Position: </h2>
+                    <h2 style="color:#333;">Position: </h2>
                     <h3>CEO</h3>
                 </div>
                     <p>About me : My initial intention in creating this website was very clear: I hoped that through this website, we could effectively reduce electricity consumption and thus achieve the goal of protecting the environment.</p>
@@ -47,12 +45,12 @@
                     <img src="limbin.jpeg" alt="Limbin's Picture" width="150">
                 </div>
                 <div class="name-row">
-                    <h2>Name :</h2>
+                    <h2 style="color:#333;">Name :</h2>
                     <h3>Lim Bin</h3>
                 </div>
                 <div class="position-row">
-                    <h2>Position: </h2>
-                    <h3>Back-end Developer</h3>
+                    <h2 style="color:#333;">Position: </h2>
+                    <h3>Website Developer</h3>
                 </div>
                 <p>About me: I focus on website development, and I hope that website users can effectively reduce their electricity consumption through this website, thus contributing to the protection of our planet.</p>
                 <div class="whatsapp-link">
@@ -72,12 +70,12 @@
                     <img src="sadra.jpeg" alt="Sadra's Picture" width="150">
                 </div>
                 <div class="name-row">  <!-- name, position -->
-                    <h2>Name : </h2>
+                    <h2 style="color:#333;">Name : </h2>
                     <h3>MohammadSadra Gharanlou</h3>
                 </div>
 
                 <div class="position-row">
-                    <h2>Position: </h2>
+                    <h2 style="color:#333;">Position: </h2>
                     <h3>System Logic & Staff Module Architect</h3>
                 </div>
 
@@ -97,12 +95,12 @@
                     <img src="lau.jpg.jpeg" alt="Lau's Picture" width="150">
                 </div>
                 <div class="name-row">  <!-- name, position -->
-                    <h2>Name :</h2>
+                    <h2 style="color:#333;">Name :</h2>
                     <h3>Lau Zhan Yeng</h3>
                 </div>
 
                 <div class="position-row">
-                    <h2>Position: </h2>
+                    <h2 style="color:#333;">Position: </h2>
                     <h3>UIUX designer</h3>
                 </div>
 

@@ -169,11 +169,11 @@ $mypoints = $studentpointsrow['points'] ?? 0;
                 <h3>Record Usage</h3>
                 <form method="POST" action="">
                     <div class="input">
-                        <label>Date</label>
+                        <label>📅Date</label>
                         <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" required>
                     </div>
                     <div class="input">
-                        <label>Usage (kWh)</label>
+                        <label>⚡Usage (kWh)</label>
                         <input type="number" name="usage" step="0.01" min="0" placeholder="e.g. 3.50" required>
                     </div>
                     <button type="submit" class="submitbtn">Submit</button>
@@ -217,7 +217,7 @@ $mypoints = $studentpointsrow['points'] ?? 0;
 </div>
 <br><br>
 <div class="mychallengebox">
-    <h2 class="energyuse" id="mychallenges">My Challenges</h2>
+    <h2 class="energyuse" id="mychallenges">📌My Challenges</h2>
     <p class="recorddaily">Challenges you have joined</p>
 
     <div class="cardlist">
@@ -235,9 +235,9 @@ $mypoints = $studentpointsrow['points'] ?? 0;
                 <p class="cardinfo">Deadline : <?php echo $row3['deadline']; ?></p>
                 <p class="cardinfo">Points : <?php echo $row3['points']; ?></p>
                 <?php if ($done): ?>
-                    <span class="successtext">Success</span>
+                    <span class="successtext">✅Success</span>
                 <?php else: ?>
-                    <span class="failtext">In Progress</span>
+                    <span class="failtext">❎In Progress</span>
                 <?php endif; ?>
             </div>
         <?php endwhile; else: ?>
@@ -277,7 +277,7 @@ $mypoints = $studentpointsrow['points'] ?? 0;
 </div>
 
 <div class="myvoucherbox">
-    <h2 class="energyuse">My Vouchers</h2>
+    <h2 class="energyuse">📥My Vouchers</h2>
     <p class="recorddaily">Vouchers you have redeemed</p>
 
     <div class="cardlist">
