@@ -178,7 +178,7 @@ $current_user = $_SESSION['username'] ?? 'Guest';
         <h1 class="menu">MENU</h1></a>
         <a href="managerpage.php">Dashboard</a>
         <a href="managewastedelectricity.php">Manage Wasted Electricity</a>
-        <a href="manageaccounts.php">Manage Accounts</a>
+        <a href="manageaccount.php">Manage Accounts</a>
         <a href="managechallenges.php">Manage Challenges</a>
         <a href="managevouchers.php">Manage Vouchers</a>
         <a href="homepage.php" style="color: #ff4d4d;">Logout</a>
