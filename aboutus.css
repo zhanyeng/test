@@ -1,84 +1,252 @@
-body{
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(to top,rgb(123, 215, 255), rgb(246, 255, 252));
-    }
+/* 全局样式基调 - 延续 Voltcampus 科技暗黑风 */
+body {
+    background-color: #080e1a;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
 
-    .about-us{
-        text-align: center;
-        margin-top: 20px;
-        font-family: Arial, sans-serif;
+.about-us {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-family: 'Arial Black', Arial, sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    color: #eef2f8;
+    letter-spacing: -1px;
+}
+
+/* 团队宣言段落 */
+.about-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+    font-size: 15px;
+    color: #8a9ab8;
+    line-height: 1.6;
+}
+
+/* 容器布局 */
+.information, .information2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.information2 {
+    margin-top: 32px;
+    margin-bottom: 80px;
+}
+
+/* 成员卡片基础样式 */
+.lian, .limbin, .sadra, .lau {
+    flex: 1;
+    min-width: 300px;
+    max-width: 460px;
+    min-height: 480px;
+    background: #111e35;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 28px;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: .35s ease;
+    box-sizing: border-box;
+}
+
+/* 顶部极光霓虹边框效果 */
+.lian::before, .limbin::before, .sadra::before, .lau::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00e87a, #38d9f5);
+    opacity: 0.8;
+}
+
+/* 卡片悬浮特效 */
+.lian:hover, .limbin:hover, .sadra:hover, .lau:hover {
+    border-color: rgba(0, 232, 122, 0.3);
+    background: #152340;
+    transform: translateY(-6px);
+    box-shadow: 0 0 40px rgba(0, 232, 122, 0.15);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    width: 100%;
+    flex: 1;
+}
+
+/* 文本行排版 */
+.name-row, .position-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.name-row h2, .position-row h2 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.name-row h3 {
+    font-size: 20px;
+    font-weight: 900;
+    color: #eef2f8 ;
+    margin: 0;
+}
+
+.position-row h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #00e87a ;
+    margin: 0;
+    background: rgba(0,232,122,0.08);
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(0,232,122,0.2);
+}
+
+.card-body p {
+    font-size: 13px;
+    color: #8a9ab8;
+    line-height: 1.7;
+    margin: 8px 0;
+}
+
+.lianpicture, .limbinpicture, .sadrapicture, .laupicture {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(0, 232, 122, 0.3);
+    box-shadow: 0 0 20px rgba(0, 232, 122, 0.2);
+    background: #0d1526;
+    transition: transform 0.5s ease;
+}
+
+.lianpicture:hover, .limbinpicture:hover, .sadrapicture:hover, .laupicture:hover {
+    transform: scale(1.05) rotate(3deg);
+    border-color: #00e87a;
+}
+
+.lianpicture img, .limbinpicture img, .sadrapicture img, .laupicture img {
+    width: 100%;
+    height: auto;
+}
+
+.whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    gap: 10px;
+    margin-top: auto;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: .3s ease;
+    width: fit-content;
+}
+
+.whatsapp-link a {
+    color: #fcfcfc;
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.whatsapp-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+.whatsapp-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.whatsapp-link:hover {
+    background: rgba(0, 232, 122, 0.1);
+    border-color: rgba(0, 232, 122, 0.4);
+}
+
+.whatsapp-link:hover a {
+    color: #00e87a;
+}
+
+/* ==========================================================================
+   手机端响应式设计 (MAX-WIDTH: 768px)
+   ========================================================================== */
+@media(max-width: 768px) {
+    .about-us {
+        margin-top: 30px;
+    }
+    
+    .about-intro {
+        font-size: 13px;
+        margin-bottom: 24px;
     }
 
     .information, .information2 {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        width: 100%;
-    }
-
-    .lian, .limbin, .sadra, .lau{
- 
-        max-width: 400px;
-        min-height: 500px;
-        margin: 40px;
-        background-color: #f0f0f0;
-        box-shadow: 0px 0px 10px rgb(177, 177, 177);
-        display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 20px;
-        border-radius: 20px;
+        gap: 16px;
+        padding: 0 16px;
     }
 
-    .card-body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        text-align: center;
+    .information2 {
+        margin-top: 16px;
+        margin-bottom: 60px;
+    }
+
+    .lian, .limbin, .sadra, .lau {
         width: 100%;
-        flex: 1;
+        min-width: unset;
+        min-height: auto;
+        padding: 32px 20px;
     }
 
-    .name-row , .position-row {
-        display: flex;
-        gap: 10px;
-        align-items: baseline;
-        justify-content: center;
+    .name-row h3 {
+        font-size: 18px;
     }
 
-    .lianpicture, .limbinpicture, .sadrapicture, .laupicture{
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid #000000;
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-    }
-
-    .lianpicture:hover, .limbinpicture:hover, .sadrapicture:hover, .laupicture:hover {
-        transform: scale(1.05);
-        transition: transform 0.5s ease;
-    }
-
-    .lianpicture img, .limbinpicture img, .sadrapicture img, .laupicture img {
-        max-width: 100%;
-        display: block;
-    }
     .whatsapp-link {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: auto;
+        width: 100%; 
+        box-sizing: border-box;
     }
-    .whatsapp-icon{
-        border-radius: 50%;
-        overflow: hidden;
-        width: 40px;
-        height: 40px;
-    }
+}

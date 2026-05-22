@@ -1,38 +1,59 @@
 <style>
-.header, h2 {
-        margin: 0;
-        padding: 0;
-        color: white;
-    }
-    .header a{
-        margin-right: 15px;
-        color: white;
-        
-    }
-    .header {
-        display: flex;
-        justify-content: space-between; 
-        align-items: center; 
-        
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        width: 100%;
-        background-color: #4fb2fd;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    }
+body {
+    background-color:#080e1a;
+    color:#eef2f8;
+    overflow-x:hidden;
+    margin:0;
+    padding: 0;
+}
+body::before {
+    content:'';
+    position:absolute;
+    top:-100px;
+    right:-80px;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,rgba(0,232,122,0.11) 0,transparent 65%);
+    pointer-events:none;
+}
 
-    .logo {
-        margin: 0;
-        padding: 20px;
-        font-size: 24px;
-        font-weight: bold;
-        color: #ffffff;
-    }
+.header {
+    position:sticky;
+    top:0;
+    z-index:1000;
+    width:100%;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    animation:header 0.6s ease forwards;
+}
+@keyframes header {
+    from {opacity:0;transform:translateY(-100%)}
+    to {opacity:1;transform:translateY(0)}
+}
+.header-content {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 40px;
+    height:68px;
+}
+.logo {
+    font-size:22px;
+    font-weight:900;
+    color:#eef2f8;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+.header-content a{
+    color:white;
+}
 </style>
 
 <div class="header">
-            <h2 class="logo">Voltcampus</h2>
-            
-                <a href = "homepage.php">Home</a>
+    <div class="header-content">
+        <h2 class="logo">Voltcampus</h2>
+        <a href = "homepage.php">Home</a>
+    </div>
 </div>

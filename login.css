@@ -1,115 +1,134 @@
-body{
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to top,rgb(123, 215, 255), rgb(246, 255, 252));
+
+.loginbox {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 垂直居中 */
+    min-height: 80vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    perspective: 1000px; /* 为 3D 旋转动画提供透视感 */
 }
-.header, h2 {
-        margin: 0;
-        padding: 0;
-        color: white;
-    }
-    .header a{
-        margin-right: 15px;
-        color: white;
-        
-    }
-    .header {
-        display: flex;
-        justify-content: space-between; 
-        align-items: center; 
-        
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        width: 100%;
-        background-color: #4fb2fd;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    }
 
-    .logo {
-        margin: 0;
-        padding: 20px;
-        font-size: 24px;
-        font-weight: bold;
-        color: #ffffff;
-    }
-
-
+/* ==========================================================================
+   登录卡片 - 高科技毛玻璃/深蓝卡片质感
+   ========================================================================== */
 .informationbox {
-    background-color: rgba(255, 255, 255, 0.9);
-    width: 450px;
+    background-color: #111e35;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    width: 100%;
+    max-width: 450px; /* 电脑端最大 450px */
     padding: 40px;
-    height: 400px;
-    border-radius: 30px; 
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-    animation: word 1.5s ease-out;
+    border-radius: 24px; 
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 232, 122, 0.05);
     text-align: left;
+    box-sizing: border-box;
 }
 
 .informationbox h1 {
-    color: #4fb2fd;
+    color: #eef2f8;
+    font-family: 'Arial Black', Arial, sans-serif;
     font-size: 32px;
+    font-weight: 900;
     text-align: center;
-    margin-bottom: 25px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
 }
+
+/* ==========================================================================
+   表单输入框
+   ========================================================================== */
 .form {
-    margin-bottom: 18px;
+    margin-bottom: 22px;
 }
 
 .form label {
     display: block;
     margin-bottom: 8px;
-    font-weight: bold;
-    color: #444;
-    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #8a9ab8; /* 淡蓝灰文本 */
+    letter-spacing: 0.5px;
 }
 
-.form input, .form select {
+.form input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #4fb2fd;
+    padding: 14px;
+    background-color: #0d1526; /* 暗黑输入框底色 */
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
-    font-size: 16px;
+    font-size: 15px;
+    color: #eef2f8;
     box-sizing: border-box;
-}
-.loginbox {
-    display: flex;
-    justify-content: center;
-    min-height: 85vh;
-    margin-top: 50px;
+    transition: all 0.3s ease;
 }
 
+/* 输入框聚焦特效 */
+.form input:focus {
+    outline: none;
+    border-color: rgba(0, 232, 122, 0.5);
+    background-color: #0f192e;
+    box-shadow: 0 0 15px rgba(0, 232, 122, 0.15);
+}
 
+/* 调整占位符颜色 */
+.form input::placeholder {
+    color: #4a5a78;
+}
 
+/* ==========================================================================
+   登录提交按钮 - 荧光绿炫酷特效
+   ========================================================================== */
 .loginbtn-submit {
     width: 100%;
-    background-color: #4fb2fd;
-    color: white;
-    padding: 12px;
+    background-color: #00e87a;
+    color: #040a12;
+    padding: 14px;
     border: none;
     border-radius: 12px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .loginbtn-submit:hover {
-    transform: scale(1.05);
+    background-color: #1fffa0;
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0, 232, 122, 0.4);
 }
 
+.loginbtn-submit:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   注册引导跳转
+   ========================================================================== */
 .signup-link {
     text-align: center;
-    margin-top: 20px;
-    font-family: Arial, sans-serif;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #8a9ab8;
 }
 
 .signup-link a {
-    color: #4fb2fd;
+    color: #00e87a;
     text-decoration: none;
     font-weight: bold;
+    margin-left: 4px;
+    transition: color 0.3s ease;
 }
+
+.signup-link a:hover {
+    color: #1fffa0;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   保留原有动画并进行丝滑优化
+   ========================================================================== */
 @keyframes header {
     from {
         opacity: 0;
@@ -119,18 +138,42 @@ body{
         opacity: 1;
         transform: translateY(0);
     }
-}.header {
-    animation: header 1.2s ease-out forwards;
 }
-@keyframes box{
-    from{
-        opacity:0;
-        transform: rotateX(-40deg);
+.header {
+    animation: header 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+Persist    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+@keyframes box {
+    from {
+        opacity: 0;
+        transform: rotateX(-30deg) translateY(30px);
     }
-    to{
-        opacity:1;
-        transform: rotateX(0);
+    to {
+        opacity: 1;
+        transform: rotateX(0) translateY(0);
     }
-}.loginbox{
-    animation: box 1.2s ease-in;
+}
+.loginbox {
+    animation: box 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ==========================================================================
+   手机端专属响应式轻量优化
+   ========================================================================== */
+@media(max-width: 768px) {
+    .loginbox {
+        min-height: 75vh;
+        padding: 20px 16px;
+    }
+    .informationbox {
+        padding: 32px 20px;
+        border-radius: 20px;
+    }
+    .informationbox h1 {
+        font-size: 28px;
+        margin-bottom: 24px;
+    }
 }

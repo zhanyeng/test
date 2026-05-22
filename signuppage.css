@@ -1,122 +1,142 @@
-body{
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(to top,rgb(123, 215, 255), rgb(246, 255, 252));
-    }
-
-.header, h2 {
-        margin: 0;
-        padding: 0;
-        color: white;
-    }
-    .header a{
-        margin-right: 15px;
-        color: white;
-        
-    }
-
-    .header {
-        display: flex;
-        justify-content: space-between; 
-        align-items: center; 
-        
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        width: 100%;
-        background-color: #4fb2fd;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .logo {
-        margin: 0;
-        padding: 20px;
-        font-size: 24px;
-        font-weight: bold;
-        color: #ffffff;
-    }
-
-
 .signupbox {
     display: flex;
     justify-content: center;
+    align-items: center;
     min-height: 85vh;
-    margin-top: 50px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    perspective: 1000px; /* 为你的 3D 翻转入场动画提供透视立体感 */
 }
 
+/* ==========================================================================
+   注册卡片 - 延续高科技深蓝毛玻璃质感
+   ========================================================================== */
 .informationbox {
-    background-color: rgba(255, 255, 255, 0.9);
-    width: 450px;
+    background-color: #111e35;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    width: 100%;
+    max-width: 450px; /* 电脑端最大 450px */
     padding: 40px;
-    border-radius: 30px; 
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-    animation: word 1.5s ease-out;
+    border-radius: 24px; 
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 232, 122, 0.05);
     text-align: left;
+    box-sizing: border-box;
 }
 
-    .informationbox h1 {
-        color: #4fb2fd;
-        font-size: 32px;
-        text-align: center;
-        margin-bottom: 25px;
-    }
+.informationbox h1 {
+    color: #eef2f8;
+    font-family: 'Arial Black', Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
 
+/* ==========================================================================
+   表单输入框与选择器 (Input & Select)
+   ========================================================================== */
 .form {
     margin-bottom: 18px;
 }
-    .form label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold;
-        color: #444;
-        font-family: Arial, sans-serif;
-    }
 
-    .form input, .form select {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #4fb2fd;
-        border-radius: 12px;
-        font-size: 16px;
-        box-sizing: border-box;
-    }
+.form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #8a9ab8; /* 科技感淡蓝灰文本 */
+    letter-spacing: 0.5px;
+}
 
+.form input, .form select {
+    width: 100%;
+    padding: 12px;
+    background-color: #0d1526; /* 暗黑输入框底色 */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    font-size: 16px;
+    color: #eef2f8;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+/* 下拉菜单(select)的各种选项在暗黑模式下的兼容性处理 */
+.form select option {
+    background-color: #111e35;
+    color: #eef2f8;
+}
+
+/* 输入框聚焦高亮特效 */
+.form input:focus, .form select:focus {
+    outline: none;
+    border-color: rgba(0, 232, 122, 0.5);
+    background-color: #0f192e;
+    box-shadow: 0 0 15px rgba(0, 232, 122, 0.15);
+}
+
+/* 调整占位符颜色 */
+.form input::placeholder {
+    color: #4a5a78;
+}
+
+/* ==========================================================================
+   注册按钮 - 荧光绿悬浮缩放特效
+   ========================================================================== */
 .signupbtn {
     width: 100%;
-    background-color: #4fb2fd;
-    color: white;
-    padding: 15px;
+    background-color: #00e87a;
+    color: #040a12;
+    padding: 14px;
     border: none;
-    border-radius: 30px;
-    font-size: 18px;
+    border-radius: 12px; /* 改用12px与输入框更统一协调，如果喜欢之前的纯圆可改回30px */
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
 }
-    .signupbtn:hover{
-        transition: transform 0.3s ease; 
-        box-shadow: 0px 0px 10px ;
-        }
 
-    .signupbtn:hover {
-        transform: scale(1.05);
-        box-shadow: 0px 0px 15px rgba(79, 178, 253, 0.5);
-    }
+.signupbtn:hover {
+    transform: scale(1.03);
+    background-color: #1fffa0;
+    box-shadow: 0px 0px 20px rgba(0, 232, 122, 0.4);
+}
 
+.signupbtn:active {
+    transform: scale(1);
+}
+
+/* ==========================================================================
+   已有账号跳转链接
+   ========================================================================== */
 .login-link {
     text-align: center;
-    margin-top: 20px;
-    font-family: Arial, sans-serif;
-    color: #666;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #8a9ab8;
 }
-    .loginbtn{
-        margin-top:15px ;
-    }
-    .loginbtn a {
-        color: #4fb2fd;
-        font-weight: bold;
-    }
 
+.loginbtn {
+    margin-top: 12px;
+}
+
+.loginbtn a {
+    color: #00e87a;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.loginbtn a:hover {
+    color: #1fffa0;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   入场交互动画优化
+   ========================================================================== */
 @keyframes header {
     from {
         opacity: 0;
@@ -126,18 +146,43 @@ body{
         opacity: 1;
         transform: translateY(0);
     }
-}.header {
-    animation: header 1.2s ease-out forwards;
 }
-@keyframes box{
-    from{
-        opacity:0;
-        transform: rotateX(-40deg);
+.header {
+    animation: header 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+@keyframes box {
+    from {
+        opacity: 0;
+        transform: rotateX(-40deg) translateY(20px);
     }
-    to{
-        opacity:1;
-        transform: rotateX(0);
+    to {
+        opacity: 1;
+        transform: rotateX(0) translateY(0);
     }
-}.signupbox{
-    animation: box 1.2s ease-in;
+}
+.signupbox {
+    /* 优化原动画的过渡曲线，使其带有丝滑缓动效果 */
+    animation: box 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ==========================================================================
+   手机端专属响应式轻量优化 (MAX-WIDTH: 768px)
+   ========================================================================== */
+@media(max-width: 768px) {
+    .signupbox {
+        min-height: 80vh;
+        padding: 20px 16px;
+    }
+    .informationbox {
+        padding: 32px 20px;
+        border-radius: 20px;
+    }
+    .informationbox h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
 }

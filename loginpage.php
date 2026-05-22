@@ -68,11 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-
-    <div class="header">
-        <h2 class="logo">Voltcampus</h2>
-        <a href="homepage.php">Home</a>
-    </div>
+    <?php include "header.php"?>
 
     <div class="loginbox">
         <div class="informationbox">

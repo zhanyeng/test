@@ -57,10 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
-   <div class="header">
-            <h2 class="logo">Voltcampus</h2>
-            <a href = "homepage.php">Home</a>
-    </div>
+       <?php include "header.php"?>
 
 
     <div class="signupbox">
