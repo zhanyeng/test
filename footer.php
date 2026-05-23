@@ -6,7 +6,6 @@
     border-top: 1px solid var(--border, rgba(255,255,255,0.06));
     padding: 70px 40px 30px;
     margin-top: 0;
-    width: 100%;
     font-family: var(--font-body, 'DM Sans', sans-serif);
     color: var(--text-primary, #eef2f8);
 }
@@ -92,12 +91,12 @@
 /* Responsive */
 
 @media (max-width: 768px) {
-    .footer-container{
-        max-width:768px;
-        display:flex;
-    }
+
+    .footer-container{display:flex; flex-direction: column; gap: 40px;
+        max-width: 90%;}
     .footer { padding: 50px 20px 24px; }
     .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    .footersection { margin-bottom: 24px; }
     
 }
 </style>

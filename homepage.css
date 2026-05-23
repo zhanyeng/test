@@ -74,7 +74,6 @@ body {
     transform:translateY(-1px);
 }
 .main-content {
-    width:100%;
     max-width:1200px;
     min-height:88vh;
     display:flex;
@@ -567,6 +566,7 @@ hr {
     }
     .header-links {
         gap: 6px;
+        max-width: 200px;
     }
     .header-links a {
         padding: 6px 14px;
@@ -574,11 +574,11 @@ hr {
     }
 
     .main-content {
+        margin:0px;
         flex-direction: column;
-        padding: 40px 20px;
         min-height: auto;
         gap: 24px;
-        text-align: center;
+        max-width: 768px;
     }
     .main-content::before {
         display: none;
