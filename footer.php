@@ -98,6 +98,7 @@
     }
     .footer { padding: 50px 20px 24px; }
     .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    
 }
 </style>
 
