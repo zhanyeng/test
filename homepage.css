@@ -565,7 +565,6 @@ hr {
     }
 }
 @media(max-width:768px) {
-    /* 导航栏 */
     .header-content {
         padding: 0 16px;
         height: 60px;
@@ -581,9 +580,8 @@ hr {
         font-size: 12px;
     }
 
-    /* 英雄视口区 (Hero Area) */
     .main-content {
-        flex-direction: column; /* 改为正常的图在上文在下，或保持 column-reverse */
+        flex-direction: column;
         padding: 40px 20px;
         min-height: auto;
         gap: 24px;
@@ -609,7 +607,6 @@ hr {
         margin-top: 24px;
     }
     
-    /* 核心数据展示 */
     .hero-stats {
         justify-content: space-between;
         gap: 12px;
@@ -623,7 +620,6 @@ hr {
         font-size: 20px;
     }
 
-    /* 英雄视口主图 */
     .image {
         width: 100%;
         max-width: 380px;

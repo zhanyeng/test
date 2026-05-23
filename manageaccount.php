@@ -86,8 +86,8 @@ $result_student = mysqli_query($conn, $query_student);
     <link rel="stylesheet" href="staffpage.css">
     <style>
         .manage-container {
-            max-width: 1100px;
-            margin: 40px auto;
+            margin-left:6%;
+            margin-right:6%;
             padding: 0 20px;
         }
 
@@ -227,13 +227,13 @@ $result_student = mysqli_query($conn, $query_student);
 </head>
 <body>
     <?php include 'userheader.php' ?>
-
+    <h1 class="a">Manage Account</h1>
+    <BR>
     <div class="manage-container">
 
-        <!-- ===== USER ACCOUNT TABLE ===== -->
-        <h1 class="a">Manage Account</h1>
+        
         <hr>
-
+<BR>
         <form action="manageaccount.php" method="get">
             <div class="search-bar">
                 <input type="text" name="search" placeholder="Search by username, email or role..." value="<?php echo $search; ?>">
