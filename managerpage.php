@@ -25,9 +25,9 @@ if (!$conn) {
     <?php include 'userheader.php' ?>
     <h1 class="dashboard">MANAGER DASHBOARD</H1>
     <h4 class="welcome">Welcome back : <?php echo $user?>
-        <br><br>
-        <hr>
-        <br>
+    <br>
+    <br><hr>
+
     <h2 class="a" id="eu">Student Electric Usage</h2>
         <p class="a">all student energy usage</p>
         <br><br>
@@ -52,7 +52,7 @@ if (!$conn) {
                     <td style="color: 
                         <?php if($row3['usage_kwh'] > 20){
                              echo 'red'; 
-                        } else { echo '#444'; } ?>">
+                        } else { echo '#ffffff'; } ?>">
                         <?php echo $row3['usage_kwh']; ?> kWh
                     </td>               
                     <td><?php echo $row3['record_date']; ?></td>

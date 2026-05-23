@@ -380,10 +380,7 @@ hr {
     box-sizing: border-box;
 }
 
-.challengebox,
-.mychallengebox,
-.pointstorebox,
-.myvoucherbox {
+.challengebox,.mychallengebox,.pointstorebox,.myvoucherbox {
     margin-top: 40px;
     margin-bottom: 8px;
 }
