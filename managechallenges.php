@@ -9,7 +9,7 @@ if (!$conn) die("Connection failed: " . mysqli_connect_error());
 if (isset($_POST['delete_id'])) {
     $id = $_POST['delete_id'];
     mysqli_query($conn, "DELETE FROM challenge WHERE challenge_id = '$id'");
-    echo "<script>window.location.href='managechallenges.php';</script>";
+    echo "<script>alert('Challenge deleted successfully!'); window.location.href='managechallenges.php';</script>";
     exit();
 }
 
@@ -24,7 +24,7 @@ if (isset($_POST['edit_id'])) {
     mysqli_query($conn, "UPDATE challenge 
                          SET description = '$description', points = '$points', deadline = '$deadline', target_kwh = '$target'
                          WHERE challenge_id = '$id'");
-    echo "<script>window.location.href='managechallenges.php';</script>";
+    echo "<script>alert('Challenge updated successfully!'); window.location.href='managechallenges.php';</script>";
     exit();
 }
 
@@ -37,7 +37,7 @@ if (isset($_POST['new_description'])) {
 
     mysqli_query($conn, "INSERT INTO challenge (description, points, deadline, target_kwh) 
                          VALUES ('$description', '$points', '$deadline', '$target')");
-    echo "<script>window.location.href='managechallenges.php';</script>";
+    echo "<script>alert('Challenge created successfully!'); window.location.href='managechallenges.php';</script>";
     exit();
 }
 
