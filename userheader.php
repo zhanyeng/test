@@ -236,7 +236,7 @@ $current_user = $_SESSION['username'] ?? 'Guest';
     <?php elseif ($role == 'manager'): ?>
         <a href="managerpage.php">📊 Dashboard</a>
         <a href="managewastedelectricity.php">⚡ Manage Wasted Electricity</a>
-        <a href="manageaccounts.php">👥 Manage Accounts</a>
+        <a href="manageaccount.php">👥 Manage Accounts</a>
         <a href="managechallenges.php">🏆 Manage Challenges</a>
         <a href="managevouchers.php">🎁 Manage Vouchers</a>
         <a href="homepage.php" style="color: #ff4d4d; border-top: 1px solid rgba(255,77,77,0.15);">🚪 Logout</a>

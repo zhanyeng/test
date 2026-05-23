@@ -13,20 +13,26 @@ if (!$conn) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user = $_POST['username'];
-    $pass = $_POST['password']; 
-    $email = $_POST['email'];
+    $user    = $_POST['username'];
+    $pass    = $_POST['password']; 
+    $email   = $_POST['email'];
     $contact = $_POST['contact_number'];
-    $role = $_POST['role'];
+    $role    = $_POST['role'];
 
+    // 先检查 username 是否已存在
+    $check = mysqli_query($conn, "SELECT * FROM user WHERE username = '$user'");
+    if (mysqli_num_rows($check) > 0) {
+        echo "<script>alert('Username already taken, please choose another one.'); window.location.href='signuppage.php';</script>";
+        exit();
+    }
 
     $sql = "INSERT INTO user (username, password, email, contact_number, role) 
             VALUES ('$user', '$pass', '$email', '$contact', '$role')";
 
     if (mysqli_query($conn, $sql)) {
-        $_SESSION['username'] = $user; //get the usernmae to auto fill when complete information
+        $_SESSION['username'] = $user;
         
-        if ($role == "student") {//if student go to complete informaton page
+        if ($role == "student") {
             echo "<script>
                     alert('you need to complete your information'); 
                     window.location.href='studentinformation.php';
@@ -68,6 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form"> 
                     <label>Username</label>
                     <input type="text" name="username" placeholder="enter your name" required>
+
+
                 </div>
                 
                 <div class="form">
