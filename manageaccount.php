@@ -14,7 +14,7 @@ if (!$conn) die("Connection failed: " . mysqli_connect_error());
 if (isset($_POST['delete_id'])) {
     $id = $_POST['delete_id'];
     mysqli_query($conn, "DELETE FROM user WHERE user_id = '$id'");
-    echo "<script>window.location.href='manageaccount.php';</script>";
+    echo "<script>alert('User deleted successfully.'); window.location.href='manageaccount.php';</script>";
     exit();
 }
 
@@ -29,7 +29,7 @@ if (isset($_POST['edit_id'])) {
     mysqli_query($conn, "UPDATE user 
                          SET username = '$username', email = '$email', contact_number = '$contact', role = '$role'
                          WHERE user_id = '$id'");
-    echo "<script>window.location.href='manageaccount.php';</script>";
+    echo "<script>alert('User updated successfully.'); window.location.href='manageaccount.php';</script>";
     exit();
 }
 
