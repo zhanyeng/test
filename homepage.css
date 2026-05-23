@@ -556,14 +556,7 @@ hr {
     background:#1fffa0;
     box-shadow:0 0 20px rgba(0,232,122,0.4);
 }
-@media(max-width:1024px) {
-    .rank-section {
-        grid-template-columns:1fr;
-    }
-    .how-grid {
-        grid-template-columns:repeat(2,1fr);
-    }
-}
+
 @media(max-width:768px) {
     .header-content {
         padding: 0 16px;

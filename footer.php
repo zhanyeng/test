@@ -1,7 +1,5 @@
 <style>
-/* ===== FOOTER ===== */
-/* 依赖 homepage.css（或任意页面 CSS）中定义的 CSS 变量 */
-/* 如果某页面没有引入 homepage.css，请在该页面的 <head> 补上字体和变量 */
+
 
 .footer {
     background: var(--bg-surface, #0d1526);
@@ -92,10 +90,12 @@
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-    .footer-container { grid-template-columns: 1fr; gap: 36px; }
-}
+
 @media (max-width: 768px) {
+    .footer-container{
+        max-width:768px;
+        display:flex;
+    }
     .footer { padding: 50px 20px 24px; }
     .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
