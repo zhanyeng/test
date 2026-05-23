@@ -249,7 +249,7 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
                 <input type="text"   name="edit_discount"    id="modal_discount"    placeholder="Discount e.g. 10% off">
                 <input type="number" name="edit_points"      id="modal_points"      placeholder="Points Needed">
                 <div class="modal-buttons">
-                    <button class="editbtn"   type="submit">Save</button>
+                    <button class="createbtn"   type="submit">Save</button>
                     <button class="cancelbtn" type="button" onclick="closeEdit()">Cancel</button>
                 </div>
             </form>

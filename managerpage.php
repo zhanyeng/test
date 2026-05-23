@@ -60,6 +60,8 @@ if (!$conn) {
                 <?php endwhile; ?>
             </table>
         </div>
+
+    <?php include 'footer.php' ?>
     
 </body>
 </html>

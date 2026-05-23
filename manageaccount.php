@@ -102,7 +102,7 @@ $result = mysqli_query($conn, $query);
         .usagetable td {
             padding: 12px 15px;
             border-bottom: 1px solid #f0f0f0;
-            color: #444;
+            color: #f3eaea;
         }
 
         .deletebtn {
