@@ -47,12 +47,7 @@ mysqli_close($conn);
     <link rel="stylesheet" href="studentinformation.css">
 </head>
 <body>
-    <div class="header">
-        <div class="header-content">
-            <h2 class="logo">Voltcampus</h2>
-            <div class="header-links"><a href="homepage.php">Home</a></div>
-        </div>
-    </div>
+    <?php include "header.php"?>
 
     <div class="container">
         <div class="info-card">
