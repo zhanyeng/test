@@ -135,7 +135,7 @@ $result_student = mysqli_query($conn, $query_student);
         .usagetable td {
             padding: 12px 15px;
             border-bottom: 1px solid #f0f0f0;
-            color: #444;
+            color: #f3eaea;
         }
 
         .deletebtn {
