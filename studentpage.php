@@ -170,7 +170,7 @@ $mypoints = $studentpointsrow['points'] ?? 0;
         <form method="POST" action="">
             <div class="input">
                 <label>📅Date</label>
-                <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" required>
+                <input type="date" class="date" name="date" value="<?php echo date('Y-m-d'); ?>" required>
             </div>
             <div class="input">
                 <label>⚡Usage (kWh)</label>

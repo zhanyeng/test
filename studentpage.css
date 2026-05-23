@@ -139,16 +139,13 @@ hr {
     transition: 0.2s ease;
 }
 
-.dailyuse tr:last-child td {
-    border-bottom: none;
-}
+
 
 .dailyuse tr:hover td {
     background-color: rgba(0,232,122,0.06);
     color: #eef2f8;
 }
 
-/* ===== RECORD FORM ===== */
 .record-content {
     background: #111e35;
     padding: 24px;
@@ -161,7 +158,6 @@ hr {
 }
 
 .record-content h3 {
-    font-family: 'Arial Black', Arial, sans-serif;
     font-size: 15px;
     font-weight: 900;
     color: #eef2f8;
@@ -193,7 +189,7 @@ hr {
     transition: 0.25s ease;
     outline: none;
 }
-.input input:focus {
+.input input:hover{
     border-color: rgba(0,232,122,0.5);
     box-shadow: 0 0 0 3px rgba(0,232,122,0.08);
 }
@@ -221,15 +217,14 @@ hr {
     background: #111e35;
     border-radius: 16px;
     padding: 20px;
-    min-height: 200px;
+    min-height: 188px;
     border: 1px solid rgba(245,197,24,0.25);
     border-left: 4px solid #f5c518;
-    max-height: 200px;
+    max-height: 188px;
     overflow-y: auto;
 }
 
 .alert-reminder h4 {
-    font-family: 'Arial Black', Arial, sans-serif;
     font-size: 14px;
     font-weight: 900;
     color: #f5c518;
@@ -247,7 +242,6 @@ hr {
     padding-bottom: 10px;
 }
 .alert-information:last-child {
-    border-bottom: none;
     padding-bottom: 0;
 }
 
@@ -269,7 +263,6 @@ hr {
     font-size: 12px;
     color: #4a5a78;
     line-height: 1.5;
-    word-break: break-word;
 }
 
 .no-alert {
@@ -280,7 +273,6 @@ hr {
     padding: 10px 0;
 }
 
-/* ===== CHALLENGE / VOUCHER CARDS ===== */
 .cardlist {
     display: flex;
     gap: 16px;
@@ -298,28 +290,17 @@ hr {
     padding: 24px 20px;
     width: 260px;
     transition: 0.35s ease;
-    position: relative;
-    overflow: hidden;
+
 }
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #00e87a, #38d9f5);
-    opacity: 0;
-    transition: 0.35s ease;
-}
+
 .card:hover {
     border-color: rgba(0,232,122,0.3);
     background: #152340;
     transform: translateY(-5px);
     box-shadow: 0 0 30px rgba(0,232,122,0.12);
 }
-.card:hover::before { opacity: 1; }
 
 .carddesc {
-    font-family: 'Arial Black', Arial, sans-serif;
     font-size: 14px;
     font-weight: 900;
     color: #eef2f8;
@@ -334,7 +315,6 @@ hr {
     line-height: 1.5;
 }
 
-/* ===== BUTTONS ===== */
 .joinbtn {
     margin-top: 14px;
     width: 100%;
@@ -364,7 +344,6 @@ hr {
     border-radius: 10px;
     font-size: 13px;
     font-weight: 700;
-    cursor: not-allowed;
 }
 
 .successtext {
@@ -401,7 +380,6 @@ hr {
     box-sizing: border-box;
 }
 
-/* ===== SECTION CONTAINERS ===== */
 .challengebox,
 .mychallengebox,
 .pointstorebox,
@@ -414,7 +392,6 @@ hr {
     margin-top: 20px;
 }
 
-/* ===== ANIMATIONS ===== */
 @keyframes word {
     from { opacity: 0; transform: translateX(-40px); }
     to   { opacity: 1; transform: translateX(0); }
