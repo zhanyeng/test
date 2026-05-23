@@ -171,7 +171,7 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
         }
 
         .cancelbtn {
-            background-color: #aaa;
+            background-color: #e74c3c;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -181,8 +181,21 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
         }
 
         .cancelbtn:hover {
-            background-color: #888;
+            background-color: #c0392b;
         }
+        .createbtn2{
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .createbtn2:hover {
+            background-color: #27ae60;
+        }
+        
 
         .expired {
             color: red;
@@ -279,7 +292,7 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
                 <input type="date"   name="new_deadline"                               required>
                 <input type="number" name="new_target"       placeholder="Target kWh"  step="0.01" required>
                 <div class="modal-buttons">
-                    <button class="createbtn" type="submit">Create</button>
+                    <button class="createbtn2" type="submit">Create</button>
                     <button class="cancelbtn" type="button" onclick="closeCreate()">Cancel</button>
                 </div>
             </form>
