@@ -109,6 +109,7 @@ hr {
 }
 
 .usagetable th, .jct th {
+    
     padding: 13px 18px;
     text-align: left;
     font-size: 11px;
@@ -350,16 +351,13 @@ hr {
     animation: move 0.8s ease-out forwards;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .record-content { width: 90%; margin-left: 4%; }
-    .cardlist { margin-left: 4%; margin-right: 4%; }
+    .cardlist { margin-left: 4%; margin-right: 4%;
+    max-width: 90%;
+     }
     .usagebox, .joinedchallenges { margin-left: 4%; margin-right: 4%; }
     .dashboard, .welcome, .a, .jc, .j { margin-left: 4%; }
     #addc { margin-left: 4%; }
 }
 
-@media (max-width: 600px) {
-    .record-content { width: 92%; padding: 24px 20px; }
-    .card { width: 100%; }
-    .cardlist { flex-direction: column; }
-}

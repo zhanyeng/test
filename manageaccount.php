@@ -1,6 +1,7 @@
 <?php
 session_start();
 $user = $_SESSION['username'] ?? 'Guest';
+
 $servername = "localhost";
 $username_db = "root";
 $password_db = "";
@@ -13,7 +14,7 @@ if (!$conn) die("Connection failed: " . mysqli_connect_error());
 if (isset($_POST['delete_id'])) {
     $id = $_POST['delete_id'];
     mysqli_query($conn, "DELETE FROM user WHERE user_id = '$id'");
-    echo "<script>alert('User deleted successfully!'); window.location.href='manageaccount.php';</script>";
+    echo "<script>window.location.href='manageaccount.php';</script>";
     exit();
 }
 
@@ -28,35 +29,11 @@ if (isset($_POST['edit_id'])) {
     mysqli_query($conn, "UPDATE user 
                          SET username = '$username', email = '$email', contact_number = '$contact', role = '$role'
                          WHERE user_id = '$id'");
-    echo "<script>alert('User information updated successfully!'); window.location.href='manageaccount.php';</script>";
+    echo "<script>window.location.href='manageaccount.php';</script>";
     exit();
 }
 
-// 编辑 student information
-if (isset($_POST['edit_student_id'])) {
-    $id       = $_POST['edit_student_id'];
-    $name     = $_POST['edit_name'];
-    $tpnumber = $_POST['edit_tpnumber'];
-    $block    = $_POST['edit_block'];
-    $room     = $_POST['edit_room'];
-    $points   = $_POST['edit_points'];
-
-    mysqli_query($conn, "UPDATE student_information 
-                         SET name = '$name', tpnumber = '$tpnumber', dorm_block = '$block', room_number = '$room', points = '$points'
-                         WHERE id = '$id'");
-    echo "<script>alert('Student information updated successfully!'); window.location.href='manageaccount.php';</script>";
-    exit();
-}
-
-// 删除 student information
-if (isset($_POST['delete_student_id'])) {
-    $id = $_POST['delete_student_id'];
-    mysqli_query($conn, "DELETE FROM student_information WHERE id = '$id'");
-    echo "<script>alert('Student information deleted successfully!'); window.location.href='manageaccount.php';</script>";
-    exit();
-}
-
-// 搜索 user
+// 搜索
 $search = '';
 if (isset($_GET['search'])) {
     $search = $_GET['search'];
@@ -64,17 +41,8 @@ if (isset($_GET['search'])) {
 } else {
     $query = "SELECT * FROM user WHERE role != 'manager' ORDER BY user_id ASC";
 }
-$result = mysqli_query($conn, $query);
 
-// 搜索 student
-$search_student = '';
-if (isset($_GET['search_student'])) {
-    $search_student = $_GET['search_student'];
-    $query_student = "SELECT * FROM student_information WHERE name LIKE '%$search_student%' OR tpnumber LIKE '%$search_student%' OR dorm_block LIKE '%$search_student%' OR room_number LIKE '%$search_student%' ORDER BY id ASC";
-} else {
-    $query_student = "SELECT * FROM student_information ORDER BY id ASC";
-}
-$result_student = mysqli_query($conn, $query_student);
+$result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
@@ -122,7 +90,6 @@ $result_student = mysqli_query($conn, $query_student);
         .usagetable {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 40px;
         }
 
         .usagetable th {
@@ -166,6 +133,7 @@ $result_student = mysqli_query($conn, $query_student);
             background-color: #3a9de0;
         }
 
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -229,11 +197,10 @@ $result_student = mysqli_query($conn, $query_student);
     <?php include 'userheader.php' ?>
 
     <div class="manage-container">
-
-        <!-- ===== USER ACCOUNT TABLE ===== -->
         <h1 class="a">Manage Account</h1>
         <hr>
 
+        <!-- 搜索栏 -->
         <form action="manageaccount.php" method="get">
             <div class="search-bar">
                 <input type="text" name="search" placeholder="Search by username, email or role..." value="<?php echo $search; ?>">
@@ -244,6 +211,7 @@ $result_student = mysqli_query($conn, $query_student);
             </div>
         </form>
 
+        <!-- 用户列表 -->
         <table class="usagetable">
             <tr class="top">
                 <th>ID</th>
@@ -262,6 +230,7 @@ $result_student = mysqli_query($conn, $query_student);
                 <td><?php echo $row['contact_number']; ?></td>
                 <td><?php echo $row['role']; ?></td>
                 <td>
+                    <!-- 编辑按钮，点击弹出 modal -->
                     <button class="editbtn" onclick="openEdit(
                         '<?php echo $row['user_id']; ?>',
                         '<?php echo $row['username']; ?>',
@@ -271,6 +240,7 @@ $result_student = mysqli_query($conn, $query_student);
                     )">Edit</button>
                 </td>
                 <td>
+                    <!-- 删除按钮 -->
                     <form action="manageaccount.php" method="post" onsubmit="return confirm('Are you sure to delete <?php echo $row['username']; ?>?')">
                         <input type="hidden" name="delete_id" value="<?php echo $row['user_id']; ?>">
                         <button class="deletebtn" type="submit">Delete</button>
@@ -279,68 +249,14 @@ $result_student = mysqli_query($conn, $query_student);
             </tr>
             <?php endwhile; ?>
         </table>
-
-        <!-- ===== STUDENT INFORMATION TABLE ===== -->
-        <h1 class="a">Manage Student Information</h1>
-        <hr>
-
-        <form action="manageaccount.php" method="get">
-            <div class="search-bar">
-                <input type="text" name="search_student" placeholder="Search by name, TP number or block..." value="<?php echo $search_student; ?>">
-                <button type="submit">Search</button>
-                <?php if ($search_student != ''): ?>
-                    <a href="manageaccount.php" style="padding: 10px 16px; background:#aaa; color:white; border-radius:8px; text-decoration:none; font-weight:bold;">Clear</a>
-                <?php endif; ?>
-            </div>
-        </form>
-
-        <table class="usagetable">
-            <tr class="top">
-                <th>ID</th>
-                <th>Name</th>
-                <th>TP Number</th>
-                <th>Block</th>
-                <th>Room Number</th>
-                <th>Points</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            <?php while ($row2 = mysqli_fetch_assoc($result_student)): ?>
-            <tr>
-                <td><?php echo $row2['id']; ?></td>
-                <td><?php echo $row2['name']; ?></td>
-                <td><?php echo $row2['tpnumber']; ?></td>
-                <td><?php echo $row2['dorm_block']; ?></td>
-                <td><?php echo $row2['room_number']; ?></td>
-                <td><?php echo $row2['points']; ?></td>
-                <td>
-                    <button class="editbtn" onclick="openEditStudent(
-                        '<?php echo $row2['id']; ?>',
-                        '<?php echo $row2['name']; ?>',
-                        '<?php echo $row2['tpnumber']; ?>',
-                        '<?php echo $row2['dorm_block']; ?>',
-                        '<?php echo $row2['room_number']; ?>',
-                        '<?php echo $row2['points']; ?>'
-                    )">Edit</button>
-                </td>
-                <td>
-                    <form action="manageaccount.php" method="post" onsubmit="return confirm('Are you sure to delete <?php echo $row2['name']; ?>?')">
-                        <input type="hidden" name="delete_student_id" value="<?php echo $row2['id']; ?>">
-                        <button class="deletebtn" type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            <?php endwhile; ?>
-        </table>
-
     </div>
 
-    <!-- Edit User Modal -->
+    <!-- Edit Modal -->
     <div class="modal" id="editModal">
         <div class="modal-box">
             <h3>Edit Account</h3>
             <form action="manageaccount.php" method="post">
-                <input type="hidden" name="edit_id"       id="modal_id">
+                <input type="hidden" name="edit_id" id="modal_id">
                 <input type="text"   name="edit_username" id="modal_username" placeholder="Username">
                 <input type="text"   name="edit_email"    id="modal_email"    placeholder="Email">
                 <input type="text"   name="edit_contact"  id="modal_contact"  placeholder="Contact Number">
@@ -350,34 +266,14 @@ $result_student = mysqli_query($conn, $query_student);
                     <option value="admin">Admin</option>
                 </select>
                 <div class="modal-buttons">
-                    <button class="editbtn"   type="submit">Save</button>
+                    <button class="editbtn" type="submit">Save</button>
                     <button class="cancelbtn" type="button" onclick="closeEdit()">Cancel</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Edit Student Modal -->
-    <div class="modal" id="editStudentModal">
-        <div class="modal-box">
-            <h3>Edit Student Information</h3>
-            <form action="manageaccount.php" method="post">
-                <input type="hidden" name="edit_student_id" id="modal_student_id">
-                <input type="text"   name="edit_name"       id="modal_name"     placeholder="Name">
-                <input type="text"   name="edit_tpnumber"   id="modal_tpnumber" placeholder="TP Number">
-                <input type="text"   name="edit_block"      id="modal_block"    placeholder="Block">
-                <input type="text"   name="edit_room"       id="modal_room"     placeholder="Room Number">
-                <input type="number" name="edit_points"     id="modal_points"   placeholder="Points">
-                <div class="modal-buttons">
-                    <button class="editbtn"   type="submit">Save</button>
-                    <button class="cancelbtn" type="button" onclick="closeEditStudent()">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <script>
-        // User modal
         function openEdit(id, username, email, contact, role) {
             document.getElementById('modal_id').value       = id;
             document.getElementById('modal_username').value = username;
@@ -389,21 +285,6 @@ $result_student = mysqli_query($conn, $query_student);
 
         function closeEdit() {
             document.getElementById('editModal').classList.remove('active');
-        }
-
-        // Student modal
-        function openEditStudent(id, name, tpnumber, block, room, points) {
-            document.getElementById('modal_student_id').value = id;
-            document.getElementById('modal_name').value       = name;
-            document.getElementById('modal_tpnumber').value   = tpnumber;
-            document.getElementById('modal_block').value      = block;
-            document.getElementById('modal_room').value       = room;
-            document.getElementById('modal_points').value     = points;
-            document.getElementById('editStudentModal').classList.add('active');
-        }
-
-        function closeEditStudent() {
-            document.getElementById('editStudentModal').classList.remove('active');
         }
     </script>
 

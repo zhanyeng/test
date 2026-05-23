@@ -75,7 +75,7 @@ if (!$conn) {
                     <td style="color: 
                         <?php if($row3['usage_kwh'] > 20){
                              echo 'red'; 
-                        } else { echo '#444'; } ?>">
+                        } else { echo '#ffffff'; } ?>">
                         <?php echo $row3['usage_kwh']; ?> kWh
                     </td>               
                     <td><?php echo $row3['record_date']; ?></td>
