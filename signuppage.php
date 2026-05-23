@@ -19,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contact = $_POST['contact_number'];
     $role    = $_POST['role'];
 
-    // 先检查 username 是否已存在
     $check = mysqli_query($conn, "SELECT * FROM user WHERE username = '$user'");
     if (mysqli_num_rows($check) > 0) {
         echo "<script>alert('Username already taken, please choose another one.'); window.location.href='signuppage.php';</script>";
