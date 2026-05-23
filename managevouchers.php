@@ -10,43 +10,43 @@ $dbname = "assignment";
 $conn = mysqli_connect($servername, $username_db, $password_db, $dbname);
 if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
-// 删除 challenge
+// 删除 voucher
 if (isset($_POST['delete_id'])) {
     $id = $_POST['delete_id'];
-    mysqli_query($conn, "DELETE FROM challenge WHERE challenge_id = '$id'");
-    echo "<script>alert('Challenge deleted successfully!'); window.location.href='managechallenges.php';</script>";
+    mysqli_query($conn, "DELETE FROM voucher WHERE voucher_id = '$id'");
+    echo "<script>window.location.href='managevouchers.php';</script>";
     exit();
 }
 
-// 编辑 challenge
+// 编辑 voucher
 if (isset($_POST['edit_id'])) {
     $id          = $_POST['edit_id'];
+    $store       = $_POST['edit_store'];
     $description = $_POST['edit_description'];
+    $discount    = $_POST['edit_discount'];
     $points      = $_POST['edit_points'];
-    $deadline    = $_POST['edit_deadline'];
-    $target      = $_POST['edit_target'];
 
-    mysqli_query($conn, "UPDATE challenge 
-                         SET description = '$description', points = '$points', deadline = '$deadline', target_kwh = '$target'
-                         WHERE challenge_id = '$id'");
-    echo "<script>alert('Challenge updated successfully!'); window.location.href='managechallenges.php';</script>";
+    mysqli_query($conn, "UPDATE voucher 
+                         SET store_name = '$store', description = '$description', discount = '$discount', points_needed = '$points'
+                         WHERE voucher_id = '$id'");
+    echo "<script>window.location.href='managevouchers.php';</script>";
     exit();
 }
 
-// 创建新 challenge
-if (isset($_POST['new_description'])) {
+// 创建新 voucher
+if (isset($_POST['new_store'])) {
+    $store       = $_POST['new_store'];
     $description = $_POST['new_description'];
+    $discount    = $_POST['new_discount'];
     $points      = $_POST['new_points'];
-    $deadline    = $_POST['new_deadline'];
-    $target      = $_POST['new_target'];
 
-    mysqli_query($conn, "INSERT INTO challenge (description, points, deadline, target_kwh) 
-                         VALUES ('$description', '$points', '$deadline', '$target')");
-    echo "<script>alert('Challenge created successfully!'); window.location.href='managechallenges.php';</script>";
+    mysqli_query($conn, "INSERT INTO voucher (store_name, description, discount, points_needed) 
+                         VALUES ('$store', '$description', '$discount', '$points')");
+    echo "<script>window.location.href='managevouchers.php';</script>";
     exit();
 }
 
-$result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
+$result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC");
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +54,7 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Challenges</title>
+    <title>Manage Vouchers</title>
     <link rel="stylesheet" href="staffpage.css">
     <style>
         .manage-container {
@@ -166,7 +166,7 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
         }
 
         .modal-box textarea {
-            height: 100px;
+            height: 80px;
             resize: vertical;
         }
 
@@ -176,7 +176,7 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
         }
 
         .cancelbtn {
-            background-color: #e74c3c;
+            background-color: #aaa;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -186,30 +186,7 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
         }
 
         .cancelbtn:hover {
-            background-color: #c0392b;
-        }
-        .createbtn2{
-            background-color: #2ecc71;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .createbtn2:hover {
-            background-color: #27ae60;
-        }
-        
-
-        .expired {
-            color: red;
-            font-weight: bold;
-        }
-
-        .active-challenge {
-            color: green;
-            font-weight: bold;
+            background-color: #888;
         }
     </style>
 </head>
@@ -217,50 +194,40 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
     <?php include 'userheader.php' ?>
 
     <div class="manage-container">
-        <h1 class="a">Manage Challenges</h1>
+        <h1 class="a">Manage Vouchers</h1>
         <hr>
 
-        <!-- 创建按钮 -->
-        <button class="createbtn" onclick="openCreate()">+ Create New Challenge</button>
+        <button class="createbtn" onclick="openCreate()">+ Create New Voucher</button>
 
-        <!-- Challenges 列表 -->
         <table class="usagetable">
             <tr class="top">
                 <th>ID</th>
+                <th>Store Name</th>
                 <th>Description</th>
-                <th>Points</th>
-                <th>Deadline</th>
-                <th>Target (kWh)</th>
-                <th>Status</th>
+                <th>Discount</th>
+                <th>Points Needed</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
             <tr>
-                <td><?php echo $row['challenge_id']; ?></td>
+                <td><?php echo $row['voucher_id']; ?></td>
+                <td><?php echo $row['store_name']; ?></td>
                 <td><?php echo $row['description']; ?></td>
-                <td><?php echo $row['points']; ?></td>
-                <td><?php echo $row['deadline']; ?></td>
-                <td><?php echo $row['target_kwh']; ?> kWh</td>
-                <td>
-                    <?php if ($row['deadline'] < date('Y-m-d')): ?>
-                        <span class="expired">Expired</span>
-                    <?php else: ?>
-                        <span class="active-challenge">Active</span>
-                    <?php endif; ?>
-                </td>
+                <td><?php echo $row['discount']; ?></td>
+                <td><?php echo $row['points_needed']; ?> pts</td>
                 <td>
                     <button class="editbtn" onclick="openEdit(
-                        '<?php echo $row['challenge_id']; ?>',
+                        '<?php echo $row['voucher_id']; ?>',
+                        '<?php echo addslashes($row['store_name']); ?>',
                         '<?php echo addslashes($row['description']); ?>',
-                        '<?php echo $row['points']; ?>',
-                        '<?php echo $row['deadline']; ?>',
-                        '<?php echo $row['target_kwh']; ?>'
+                        '<?php echo addslashes($row['discount']); ?>',
+                        '<?php echo $row['points_needed']; ?>'
                     )">Edit</button>
                 </td>
                 <td>
-                    <form action="managechallenges.php" method="post" onsubmit="return confirm('Are you sure to delete this challenge?')">
-                        <input type="hidden" name="delete_id" value="<?php echo $row['challenge_id']; ?>">
+                    <form action="managevouchers.php" method="post" onsubmit="return confirm('Are you sure to delete this voucher?')">
+                        <input type="hidden" name="delete_id" value="<?php echo $row['voucher_id']; ?>">
                         <button class="deletebtn" type="submit">Delete</button>
                     </form>
                 </td>
@@ -272,13 +239,13 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
     <!-- Edit Modal -->
     <div class="modal" id="editModal">
         <div class="modal-box">
-            <h3>Edit Challenge</h3>
-            <form action="managechallenges.php" method="post">
-                <input type="hidden"  name="edit_id"          id="modal_id">
-                <textarea            name="edit_description"  id="modal_description"  placeholder="Description"></textarea>
-                <input type="number" name="edit_points"       id="modal_points"       placeholder="Points">
-                <input type="date"   name="edit_deadline"     id="modal_deadline">
-                <input type="number" name="edit_target"       id="modal_target"       placeholder="Target kWh" step="0.01">
+            <h3>Edit Voucher</h3>
+            <form action="managevouchers.php" method="post">
+                <input type="hidden" name="edit_id"          id="modal_id">
+                <input type="text"   name="edit_store"       id="modal_store"       placeholder="Store Name">
+                <textarea            name="edit_description" id="modal_description" placeholder="Description"></textarea>
+                <input type="text"   name="edit_discount"    id="modal_discount"    placeholder="Discount e.g. 10% off">
+                <input type="number" name="edit_points"      id="modal_points"      placeholder="Points Needed">
                 <div class="modal-buttons">
                     <button class="editbtn"   type="submit">Save</button>
                     <button class="cancelbtn" type="button" onclick="closeEdit()">Cancel</button>
@@ -290,14 +257,14 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
     <!-- Create Modal -->
     <div class="modal" id="createModal">
         <div class="modal-box">
-            <h3>Create New Challenge</h3>
-            <form action="managechallenges.php" method="post">
-                <textarea            name="new_description"  placeholder="Description" required></textarea>
-                <input type="number" name="new_points"       placeholder="Points"      required>
-                <input type="date"   name="new_deadline"                               required>
-                <input type="number" name="new_target"       placeholder="Target kWh"  step="0.01" required>
+            <h3>Create New Voucher</h3>
+            <form action="managevouchers.php" method="post">
+                <input type="text"   name="new_store"       placeholder="Store Name"               required>
+                <textarea            name="new_description" placeholder="Description"              required></textarea>
+                <input type="text"   name="new_discount"    placeholder="Discount e.g. 10% off"    required>
+                <input type="number" name="new_points"      placeholder="Points Needed"             required>
                 <div class="modal-buttons">
-                    <button class="createbtn2" type="submit">Create</button>
+                    <button class="createbtn" type="submit">Create</button>
                     <button class="cancelbtn" type="button" onclick="closeCreate()">Cancel</button>
                 </div>
             </form>
@@ -305,13 +272,12 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
     </div>
 
     <script>
-        // Edit modal
-        function openEdit(id, description, points, deadline, target) {
+        function openEdit(id, store, description, discount, points) {
             document.getElementById('modal_id').value          = id;
+            document.getElementById('modal_store').value       = store;
             document.getElementById('modal_description').value = description;
+            document.getElementById('modal_discount').value    = discount;
             document.getElementById('modal_points').value      = points;
-            document.getElementById('modal_deadline').value    = deadline;
-            document.getElementById('modal_target').value      = target;
             document.getElementById('editModal').classList.add('active');
         }
 
@@ -319,7 +285,6 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
             document.getElementById('editModal').classList.remove('active');
         }
 
-        // Create modal
         function openCreate() {
             document.getElementById('createModal').classList.add('active');
         }
