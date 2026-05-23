@@ -14,7 +14,7 @@ if (!$conn) die("Connection failed: " . mysqli_connect_error());
 if (isset($_POST['delete_id'])) {
     $id = $_POST['delete_id'];
     mysqli_query($conn, "DELETE FROM voucher WHERE voucher_id = '$id'");
-    echo "<script>window.location.href='managevouchers.php';</script>";
+    echo "<script>alert('Voucher deleted successfully!'); window.location.href='managevouchers.php';</script>";
     exit();
 }
 
@@ -29,7 +29,7 @@ if (isset($_POST['edit_id'])) {
     mysqli_query($conn, "UPDATE voucher 
                          SET store_name = '$store', description = '$description', discount = '$discount', points_needed = '$points'
                          WHERE voucher_id = '$id'");
-    echo "<script>window.location.href='managevouchers.php';</script>";
+    echo "<script>alert('Voucher updated successfully!'); window.location.href='managevouchers.php';</script>";
     exit();
 }
 
@@ -42,7 +42,7 @@ if (isset($_POST['new_store'])) {
 
     mysqli_query($conn, "INSERT INTO voucher (store_name, description, discount, points_needed) 
                          VALUES ('$store', '$description', '$discount', '$points')");
-    echo "<script>window.location.href='managevouchers.php';</script>";
+    echo "<script>alert('Voucher created successfully!'); window.location.href='managevouchers.php';</script>";
     exit();
 }
 
@@ -176,17 +176,19 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
         }
 
         .cancelbtn {
-            background-color: #aaa;
+            background-color: #e74c3c;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 24px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 20px;
         }
 
         .cancelbtn:hover {
-            background-color: #888;
+            background-color: #c0392b;
         }
     </style>
 </head>
