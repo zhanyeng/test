@@ -1,4 +1,3 @@
-/* 全局样式基调 - 延续 Voltcampus 科技暗黑风 */
 body {
     background-color: #080e1a;
     margin: 0;
@@ -18,7 +17,6 @@ body {
     letter-spacing: -1px;
 }
 
-/* 团队宣言段落 */
 .about-intro {
     text-align: center;
     max-width: 600px;
@@ -29,7 +27,6 @@ body {
     line-height: 1.6;
 }
 
-/* 容器布局 */
 .information, .information2 {
     display: flex;
     flex-wrap: wrap;
@@ -47,7 +44,6 @@ body {
     margin-bottom: 80px;
 }
 
-/* 成员卡片基础样式 */
 .lian, .limbin, .sadra, .lau {
     flex: 1;
     min-width: 300px;
