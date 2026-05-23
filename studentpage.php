@@ -116,8 +116,8 @@ $mypoints = $studentpointsrow['points'] ?? 0;
         <h4 class="welcome">Welcome back : <?php echo $user; ?></h4>
         <h4 class="room">Room number : <?php echo $block; ?>-<?php echo $room; ?></h4>
     </div>
+    <br><hr><br>
 
-    <hr ><br><br>
     <div class="content2">
         <h2 class="energyuse" id="energy">⚡Energy use</h2>
         <p class="recorddaily">Record your daily energy use</p>

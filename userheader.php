@@ -1,7 +1,5 @@
 <style>
-    /* ==========================================================================
-       公共导航栏与全局基调 (兼容电脑与手机)
-       ========================================================================== */
+
     body {
         background-color: #080e1a;
         color: #eef2f8;
@@ -16,7 +14,7 @@
         top: 0;
         z-index: 1000;
         width: 100%;
-        background: rgba(8, 14, 26, 0.85); /* 磨砂半透明底色 */
+        background: rgba(8, 14, 26, 0.85); 
         backdrop-filter: blur(12px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         display: flex;
@@ -51,9 +49,7 @@
         font-size: 14px;
     }
 
-    /* ==========================================================================
-       汉堡包菜单按钮 (Menu Toggle Button)
-       ========================================================================== */
+  
     .menu-btn {
         display: flex;
         flex-direction: column;
@@ -67,7 +63,7 @@
         display: block;
         height: 2px;
         width: 100%;
-        background-color: #00e87a; /* 改为炫酷荧光绿线 */
+        background-color: #00e87a; 
         border-radius: 2px;
         transition: 0.3s ease;
     }
@@ -76,17 +72,14 @@
         background-color: #1fffa0;
     }
 
-    /* ==========================================================================
-       侧边滑动菜单 (Side Menu) - 升级为暗黑高科技风
-       ========================================================================== */
     .side-menu {
         position: fixed;
-        z-index: 1001; /* 必须高于 header */
+        z-index: 1001; 
         top: 0;
-        left: -280px;  /* 宽度微调至 280px，留出更多文字空间 */
+        left: -280px; 
         width: 280px;
         height: 100%;
-        background-color: #0d1526; /* 暗黑背景 */
+        background-color: #0d1526; 
         border-right: 1px solid rgba(255, 255, 255, 0.06);
         box-shadow: 10px 0px 40px rgba(0, 0, 0, 0.5);
         transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -94,7 +87,6 @@
         box-sizing: border-box;
     }
 
-    /* 使用 CSS Translate 代替 left 动画，滑动在手机上更丝滑 */
     .side-menu.active {
         transform: translateX(280px);
     }
@@ -103,7 +95,7 @@
         font-family: 'Arial Black', Arial, sans-serif;
         font-size: 22px;
         font-weight: 900;
-        color: #00e87a; /* 菜单标题高亮绿色 */
+        color: #00e87a; 
         padding: 20px 24px;
         margin: 0;
         letter-spacing: 1px;
@@ -114,24 +106,20 @@
         display: block;
         padding: 16px 24px;
         text-decoration: none;
-        color: #8a9ab8; /* 未激活时灰蓝色 */
+        color: #8a9ab8;
         font-size: 15px;
         font-weight: 500;
         border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         transition: all 0.3s ease;
     }
 
-    /* 侧边栏选项悬浮特效 */
     .side-menu a:hover {
         background-color: rgba(0, 232, 122, 0.08);
         color: #1fffa0;
-        padding-left: 32px; /* 悬浮时向右微移，极具动感 */
-        border-left: 4px solid #00e87a; /* 左边加入绿色高亮边框线 */
+        padding-left: 32px; 
+        border-left: 4px solid #00e87a; 
     }
 
-    /* ==========================================================================
-       遮罩层与头像框修复
-       ========================================================================== */
     .overlay {
         z-index: 999;
         position: fixed;
@@ -140,7 +128,7 @@
         width: 100%;
         height: 100%;
         background: rgba(4, 10, 18, 0.6);
-        backdrop-filter: blur(4px); /* 遮罩层背景模糊，高级感 */
+        backdrop-filter: blur(4px); 
         display: none;
     }
 
@@ -148,13 +136,12 @@
         display: block;
     }
 
-    /* 修复原代码中的拼写错误 boder -> border */
     .frame {
         width: 32px;
         height: 32px;
         overflow: hidden;
-        border: 2px solid rgba(0, 232, 122, 0.4); /* 荧光绿头像圈 */
-        border-radius: 50%; /* 完美正圆 */
+        border: 2px solid rgba(0, 232, 122, 0.4); 
+        border-radius: 50%; 
         box-sizing: border-box;
         background: #0d1526;
         display: flex;
@@ -168,7 +155,6 @@
         object-fit: cover;
     }
 
-    /* 入场动画 */
     @keyframes header {
         from {
             opacity: 0;
@@ -180,18 +166,16 @@
         }
     }
 
-    /* ==========================================================================
-       手机端细节优化
-       ========================================================================== */
+
     @media(max-width: 768px) {
         .header {
             padding: 0 16px;
         }
         .username {
-            display: none; /* 在手机上隐藏文字名字，只留头像，节省顶部空间 */
+            display: none;
         }
         .side-menu {
-            width: 260px; /* 手机上侧边栏稍微收窄一点点 */
+            width: 260px; 
         }
         .side-menu.active {
             transform: translateX(260px);
@@ -200,7 +184,6 @@
 </style>
 
 <?php
-// 安全获取角色及用户名
 $role = $_SESSION['role'] ?? "unknown";
 $current_user = $_SESSION['username'] ?? 'Guest';
 ?>
