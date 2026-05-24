@@ -1,7 +1,7 @@
 <?php
 session_start();
 $user  = $_SESSION['username'] ?? 'Guest';
-///////////////////////cannect database///////////////
+///////////////////////connect database///////////////
 $servername = "localhost";
 $username_db = "root";
 $password_db = "";
