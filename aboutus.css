@@ -41,6 +41,7 @@ body {
     margin-bottom: 80px;
 }
 
+/* base card styles shared */
 .lian, .limbin, .sadra, .lau {
     flex: 1;
     min-width: 300px;
@@ -53,18 +54,50 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 40px 28px;
-    border-radius: 24px;
+    border-radius: 22px;
     position: relative;
     overflow: hidden;
-    transition: .35s ease;
     box-sizing: border-box;
 }
 
+/* individual hover tweaks so they don't feel identical */
+.lian {
+    transition: .3s ease;
+}
+.lian:hover {
+    border-color: rgba(0, 232, 122, 0.3);
+    background: #152340;
+    transform: translateY(-5px);
+    box-shadow: 0 0 40px rgba(0, 232, 122, 0.15);
+}
 
-.lian:hover, .limbin:hover, .sadra:hover, .lau:hover {
+.limbin {
+    transition: .3s ease;
+}
+.limbin:hover {
+    border-color: rgba(0, 232, 122, 0.3);
+    background: #152340;
+    transform: translateY(-7px);
+    box-shadow: 0 0 40px rgba(0, 232, 122, 0.15);
+}
+
+.sadra {
+    transition: .3s ease;
+}
+.sadra:hover {
     border-color: rgba(0, 232, 122, 0.3);
     background: #152340;
     transform: translateY(-6px);
+    box-shadow: 0 0 40px rgba(0, 232, 122, 0.15);
+}
+
+.lau {
+    transition: .3s ease;
+}
+.lau:hover {
+    border-color: rgba(0, 232, 122, 0.3);
+    background: #152340;
+    transform: translateY(-5px);
     box-shadow: 0 0 40px rgba(0, 232, 122, 0.15);
 }
 
@@ -97,19 +130,19 @@ body {
 .name-row h3 {
     font-size: 20px;
     font-weight: 900;
-    color: #eef2f8 ;
+    color: #eef2f8;
     margin: 0;
 }
 
 .position-row h3 {
     font-size: 14px;
-    font-weight: 700;
-    color: #00e87a ;
+    font-weight: 600;
+    color: #00e87a;
     margin: 0;
     background: rgba(0,232,122,0.08);
     padding: 4px 12px;
     border-radius: 25px;
-    border: 1px solid rgba(0,232,122,0.2);
+    border: 1px solid rgba(0,232,122,0.22);
 }
 
 .card-body p {
@@ -128,13 +161,13 @@ body {
     justify-content: center;
     align-items: center;
     border: 2px solid rgba(0, 232, 122, 0.3);
-    box-shadow: 0 0 20px rgba(0, 232, 122, 0.2);
+    box-shadow: 0 0 20px rgba(0, 232, 122, 0.18);
     background: #0d1526;
-    transition: transform 0.5s ease;
+    transition: transform 0.45s ease;
 }
 
 .lianpicture:hover, .limbinpicture:hover, .sadrapicture:hover, .laupicture:hover {
-    transform: scale(1.05) ;
+    transform: scale(1.05);
     border-color: #00e87a;
 }
 
@@ -147,7 +180,7 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color:white;
+    color: white;
     gap: 10px;
     margin-top: auto;
     background: rgba(255, 255, 255, 0.05);
@@ -224,7 +257,7 @@ body {
     }
 
     .whatsapp-link {
-        width: 100%; 
+        width: 100%;
         box-sizing: border-box;
     }
 }

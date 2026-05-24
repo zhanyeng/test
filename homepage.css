@@ -1,4 +1,3 @@
-
 body {
     background-color:#080e1a;
     color:#eef2f8;
@@ -49,7 +48,7 @@ body {
     font-size:14px;
     font-weight:500;
     border-radius:25px;
-    transition:.3s ease;
+    transition:.28s ease;
 }
 .login {
     color:#8a9ab8;
@@ -57,7 +56,7 @@ body {
 }
 .login:hover {
     color:#eef2f8;
-    border-color:rgba(255,255,255,0.06);
+    border-color:rgba(255,255,255,0.07);
     background:rgba(255,255,255,0.05);
 }
 .login:active {
@@ -104,12 +103,12 @@ body {
     from {opacity:0;transform:translateX(-40px)}
     to {opacity:1;transform:translateX(0)}
 }
-.smart{
+.smart {
     display:inline-flex;
     align-items:center;
     gap:7px;
     background:rgba(0,232,122,0.08);
-    border:1px solid rgba(0,232,122,0.3);
+    border:1px solid rgba(0,232,122,0.28);
     color:#00e87a;
     font-size:11px;
     font-weight:700;
@@ -130,7 +129,7 @@ body {
 .content1 p {
     font-size:15px;
     color:#8a9ab8;
-    line-height:1.75;
+    line-height:1.7;
     max-width:460px;
 }
 .content1 .header-links {
@@ -160,7 +159,7 @@ body {
 }
 .image {
     width:520px;
-    border-radius:32px;
+    border-radius:30px;
     overflow:hidden;
     border:1px solid rgba(255,255,255,0.06);
     box-shadow:0 20px 60px rgba(0,0,0,0.45);
@@ -258,17 +257,18 @@ hr {
     margin:48px auto 0;
     padding:0 40px 80px;
 }
-.Electricity-consumption,.challenge,.reward {
+
+/* feature cards — each gets its own hover so they don't feel copy-pasted */
+.Electricity-consumption, .challenge, .reward {
     flex:1;
     background:#111e35;
     border:1px solid rgba(255,255,255,0.06);
-    border-radius:24px;
+    border-radius:22px;
     padding:36px 28px;
-    transition:0.35s ease;
     position:relative;
     overflow:hidden;
 }
-.Electricity-consumption::before,.challenge::before,.reward::before {
+.Electricity-consumption::before, .challenge::before, .reward::before {
     content:'';
     position:absolute;
     top:0;
@@ -279,40 +279,61 @@ hr {
     opacity:0;
     transition:.35s ease;
 }
-.Electricity-consumption:hover,.challenge:hover,.reward:hover {
-    border-color:rgba(0,232,122,0.3);
+.Electricity-consumption {
+    transition:0.3s ease;
+}
+.Electricity-consumption:hover {
+    border-color:rgba(0,232,122,0.28);
     background:#152340;
-    transform:translateY(-6px);
+    transform:translateY(-5px);
     box-shadow:0 0 40px rgba(0,232,122,0.15);
 }
+.challenge {
+    transition:0.32s ease;
+}
+.challenge:hover {
+    border-color:rgba(0,232,122,0.3);
+    background:#152340;
+    transform:translateY(-7px);
+    box-shadow:0 0 40px rgba(0,232,122,0.15);
+}
+.reward {
+    transition:0.27s ease;
+}
+.reward:hover {
+    border-color:rgba(0,232,122,0.25);
+    background:#152340;
+    transform:translateY(-6px);
+    box-shadow:0 0 36px rgba(0,232,122,0.14);
+}
 
-.Electricity-consumption h3,.challenge h3,.reward h3 {
+.Electricity-consumption h3, .challenge h3, .reward h3 {
     font-size:17px;
-    font-weight:900;
+    font-weight:800;
     color:#eef2f8;
     margin:18px 0 10px;
 }
-.Electricity-consumption p,.challenge p,.reward p {
+.Electricity-consumption p, .challenge p, .reward p {
     font-size:13px;
     color:#8a9ab8;
     line-height:1.7;
 }
-.Electricity-consumption-image,.challenge-image,.reward-image {
+.Electricity-consumption-image, .challenge-image, .reward-image {
     width:56px;
     height:56px;
-    border-radius:16px;
+    border-radius:15px;
     background:rgba(0,232,122,0.08);
-    border:1px solid rgba(0,232,122,0.3);
+    border:1px solid rgba(0,232,122,0.28);
     overflow:hidden;
     display:flex;
     align-items:center;
     justify-content:center;
     transition:.3s ease;
 }
-.Electricity-consumption-image:hover,.challenge-image:hover,.reward-image:hover {
+.Electricity-consumption-image:hover, .challenge-image:hover, .reward-image:hover {
     transform:scale(1.08);
 }
-.Electricity-consumption-image img,.challenge-image img,.reward-image img {
+.Electricity-consumption-image img, .challenge-image img, .reward-image img {
     width:65%;
     height:65%;
 }
@@ -330,14 +351,14 @@ hr {
     display:flex;
     gap:2px;
     background:rgba(255,255,255,0.06);
-    border-radius:24px;
+    border-radius:22px;
     overflow:hidden;
     margin-top:48px;
 }
 .how-card {
     background:#0d1526;
     padding:40px 32px;
-    transition:.3s ease;
+    transition:.28s ease;
 }
 .how-card:hover {
     background:#111e35;
@@ -345,7 +366,7 @@ hr {
 .how-num {
     width:52px;
     height:52px;
-    border-radius:14px;
+    border-radius:13px;
     border:2px solid rgba(0,232,122,0.3);
     display:flex;
     align-items:center;
@@ -356,14 +377,14 @@ hr {
 }
 .how-title {
     font-size:16px;
-    font-weight:900;
+    font-weight:800;
     color:#eef2f8;
     margin-bottom:10px;
 }
 .how-desc {
     font-size:13px;
     color:#8a9ab8;
-    line-height:1.75;
+    line-height:1.7;
 }
 .info-section {
     display:grid;
@@ -371,23 +392,37 @@ hr {
     margin:48px auto 0;
     padding:0 40px 80px;
 }
-.info-box,.info-box2,.info-box3 {
+.info-box, .info-box2, .info-box3 {
     background:#111e35;
     border:1px solid rgba(255,255,255,0.06);
-    border-radius:24px;
+    border-radius:22px;
     padding:32px;
     width:52%;
     margin-top:24px;
-    transition:0.35s ease;
+}
+.info-box {
+    transition:0.3s ease;
+}
+.info-box:hover {
+    border-color:rgba(0,232,122,0.28);
+    background:#152340;
+    box-shadow:0 0 40px rgba(0,232,122,0.15);
 }
 .info-box2 {
     margin-left:24%;
+    transition:0.33s ease;
+}
+.info-box2:hover {
+    border-color:rgba(0,232,122,0.3);
+    background:#152340;
+    box-shadow:0 0 40px rgba(0,232,122,0.15);
 }
 .info-box3 {
     margin-left:48%;
+    transition:0.28s ease;
 }
-.info-box:hover,.info-box2:hover,.info-box3:hover {
-    border-color:rgba(0,232,122,0.3);
+.info-box3:hover {
+    border-color:rgba(0,232,122,0.26);
     background:#152340;
     box-shadow:0 0 40px rgba(0,232,122,0.15);
 }
@@ -398,14 +433,14 @@ hr {
     line-height:1.6;
     color:#eef2f8;
 }
-.info-box h3,.info-box2 h3,.info-box3 h3 {
+.info-box h3, .info-box2 h3, .info-box3 h3 {
     font-size:17px;
-    font-weight:900;
+    font-weight:800;
     color:#eef2f8;
     margin:0 0 10px 0;
     line-height:1.6;
 }
-.info-box p,.info-box2 p,.info-box3 p {
+.info-box p, .info-box2 p, .info-box3 p {
     font-size:13px;
     color:#8a9ab8;
     line-height:1.75;
@@ -443,18 +478,18 @@ hr {
 .rank-card {
     background:#111e35;
     border:1px solid rgba(255,255,255,0.06);
-    border-radius:24px;
+    border-radius:22px;
     padding:24px 16px;
     text-align:center;
-    transition:0.35s ease;
+    transition:0.3s ease;
     position:relative;
     overflow:hidden;
     width:160px;
 }
 .rank-card:hover {
     border-color:rgba(0,232,122,0.3);
-    transform:translateY(-6px);
-    box-shadow:0 0 40px rgba(0,232,122,0.15);
+    transform:translateY(-5px);
+    box-shadow:0 0 38px rgba(0,232,122,0.14);
 }
 .rank-0 {
     margin-bottom:40px;
@@ -494,7 +529,7 @@ hr {
 .info-card {
     background:#111e35;
     border:1px solid rgba(255,255,255,0.06);
-    border-radius:32px;
+    border-radius:28px;
     padding:32px 28px;
     display:flex;
     flex-direction:column;
@@ -515,7 +550,7 @@ hr {
 .info-card p {
     font-size:13px;
     color:#8a9ab8;
-    line-height:1.75;
+    line-height:1.7;
     margin-bottom:10px;
 }
 .info-card strong {
@@ -535,7 +570,7 @@ hr {
     border-radius:999px;
     text-decoration:none;
     align-self:flex-start;
-    transition:.3s ease;
+    transition:.28s ease;
 }
 .info-btn:hover {
     background:#1fffa0;
@@ -690,7 +725,7 @@ hr {
         display: flex;
         flex-direction: column;
         margin-top: 24px;
-        gap: 16px; 
+        gap: 16px;
         background: transparent;
         border-radius: 0;
         overflow: visible;

@@ -203,9 +203,9 @@ if (!$conn) {
     <?php while ($row = mysqli_fetch_assoc($vouchers)): ?>
     <div class="Electricity-consumption" style="text-align:center;">
         <p style="font-size:2.5rem;margin:0;">🎁</p>
-        <h3><?= htmlspecialchars($row['store_name']) ?></h3>
-        <p><?= htmlspecialchars($row['description']) ?></p>
-        <p style="color:var(--accent);font-weight:700;">🏷️ <?= htmlspecialchars($row['discount']) ?></p>
+        <h3><?php echo $row['store_name']; ?></h3>
+        <p><?php echo $row['description']; ?></p>
+        <p style="color:var(--accent);font-weight:700;">🏷️ <?php echo $row['discount']; ?></p>
     </div>
     <?php endwhile; ?>
 </div>

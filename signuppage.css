@@ -5,7 +5,6 @@
     min-height: 85vh;
     padding: 40px 20px;
     box-sizing: border-box;
-    perspective: 1000px; 
 }
 
 
@@ -106,6 +105,12 @@
 .loginbtn a:hover {
     color: #1fffa0;
     text-decoration: underline;
+}
+.form input:focus{
+    outline: none;
+    color:#00e87a;
+    border-color: #00e87a;
+    box-shadow: 0px 0px 10px #028c4cb1;
 }
 
 @keyframes header {
