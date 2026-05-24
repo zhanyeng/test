@@ -69,7 +69,7 @@ if (!$conn) {
                     while ($row3 = mysqli_fetch_assoc($allusage)):
                 ?>
                 <tr>
-                    <td color:white><?php echo $row3['dorm_block']; ?></td>
+                    <td ><?php echo $row3['dorm_block']; ?></td>
                     <td><?php echo $row3['room_number']; ?></td>
                     <td><?php echo $row3['username']; ?></td>
                     <td style="color: 
