@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-///////////////////////cannect database///////////////
+///////////////////////connect database///////////////
 $servername = "localhost";
 $username_db = "root";
 $password_db = "";

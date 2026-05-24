@@ -121,9 +121,7 @@
                 <span style="filter:drop-shadow(0 0 6px #00e87a)">⚡</span>Voltcampus
             </div>
             <p>
-                An energy management platform built for modern campuses.
-                We help students track consumption, join sustainability challenges,
-                and build a greener campus — one kilowatt at a time.
+               Voltcampus is a web-based system designed to help students and faculty monitor electricity consumption in their dormitories. Users can view historical electricity usage records, participate in energy-saving challenges, and redeem rewards with points.
             </p>
         </div>
 

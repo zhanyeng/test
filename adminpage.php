@@ -1,7 +1,7 @@
 <?php
 session_start();
 $user  = $_SESSION['username'] ?? 'Guest';
-///////////////////////cannect database///////////////
+///////////////////////connect database///////////////
 $servername = "localhost";
 $username_db = "root";
 $password_db = "";
@@ -30,7 +30,7 @@ if (!$conn) {
     <div class="all">
         <div class="al">
             <h1 class="dashboard">ADMIN DASHBOARD</H1>
-            <h4 class="welcome">Welcome back : <?php echo $user?>
+            <h4 class="welcome">Welcome back : <?php echo $user?></h4>
         </div>    
             <div class ="alertadmindashboard">
                 <?php

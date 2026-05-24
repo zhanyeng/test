@@ -24,7 +24,6 @@
 
 .informationbox h1 {
     color: #eef2f8;
-    font-family: 'Arial Black', Arial, sans-serif;
     font-size: 32px;
     font-weight: 900;
     text-align: center;
@@ -126,8 +125,7 @@
     }
 }
 .header {
-    animation: header 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    
+    animation: header 1.2 ease-in-out;    
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -144,7 +142,7 @@
     }
 }
 .loginbox {
-    animation: box 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation:box 1.2s ease-in-out
 }
 
 
