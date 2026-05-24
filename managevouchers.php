@@ -10,7 +10,7 @@ $dbname = "assignment";
 $conn = mysqli_connect($servername, $username_db, $password_db, $dbname);
 if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
-// 删除 voucher
+//cancel voucher
 if (isset($_POST['delete_id'])) {
     $id = $_POST['delete_id'];
     mysqli_query($conn, "DELETE FROM voucher WHERE voucher_id = '$id'");
@@ -18,7 +18,7 @@ if (isset($_POST['delete_id'])) {
     exit();
 }
 
-// 编辑 voucher
+// edit voucher
 if (isset($_POST['edit_id'])) {
     $id          = $_POST['edit_id'];
     $store       = $_POST['edit_store'];
@@ -33,7 +33,7 @@ if (isset($_POST['edit_id'])) {
     exit();
 }
 
-// 创建新 voucher
+// create voucher
 if (isset($_POST['new_store'])) {
     $store       = $_POST['new_store'];
     $description = $_POST['new_description'];
@@ -57,12 +57,10 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
     <title>Manage Vouchers</title>
     <link rel="stylesheet" href="staffpage.css">
     <style>
-        /* ==========================================================================
-           1. 电脑端原本样式 (原封不动)
-           ========================================================================== */
+      
         .manage-container {
-            max-width: 1100px;
-            margin: 40px auto;
+            margin-right: 6%;
+            margin-left:6%;
             padding: 0 20px;
         }
 
@@ -194,9 +192,7 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
             background-color: #c0392b;
         }
 
-        /* ==========================================================================
-           2. 移动端/电话版专门适配样式 (当检测到屏幕宽度小于 768px 时自动重写)
-           ========================================================================== */
+
         @media (max-width: 768px) {
             .manage-container {
                 margin: 24px auto;
@@ -205,7 +201,6 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
                 box-sizing: border-box;
             }
 
-            /* 让标题在手机端排版自适应 */
             .manage-container h1.a {
                 font-size: 22px;
                 margin-left: 0;
@@ -215,7 +210,6 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
                 margin-right: 0;
             }
 
-            /* 方便用手指触控，让添加按钮撑满屏幕宽度 */
             .createbtn {
                 width: 100%;
                 padding: 12px;
@@ -224,22 +218,19 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
                 box-sizing: border-box;
             }
 
-            /* 核心修改：让过宽的长表格在手机屏幕内支持横向划动，绝不撑爆整个网页 */
             .usagetable {
                 display: block;
                 width: 100% !important;
                 overflow-x: auto;
-                -webkit-overflow-scrolling: touch; /* 顺滑滚动 */
-                white-space: nowrap; /* 文本不换行 */
-                background: #0d1526; /* 统一暗色系背景防止露出白底 */
-            }
+                -webkit-overflow-scrolling: touch; 
+                white-space: nowrap;
+                background: #0d1526; 
 
             .usagetable th, .usagetable td {
                 padding: 10px 12px;
                 font-size: 13px;
             }
 
-            /* 移动端弹窗盒子宽度自适应与边距调整 */
             .modal {
                 padding: 16px;
                 box-sizing: border-box;
@@ -251,7 +242,6 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
                 padding: 20px;
             }
 
-            /* 增加输入框在手机端的触碰高度 */
             .modal-box input,
             .modal-box textarea {
                 padding: 12px;
@@ -259,7 +249,6 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
                 margin-bottom: 12px;
             }
 
-            /* 弹窗底部 Save 与 Cancel 按钮并排各占一半 */
             .modal-buttons {
                 gap: 8px;
             }
@@ -279,11 +268,11 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
 </head>
 <body>
     <?php include 'userheader.php' ?>
-
+    <h1 class="a">Manage Vouchers</h1>
     <div class="manage-container">
-        <h1 class="a">Manage Vouchers</h1>
+        <br>
         <hr>
-
+        <br>
         <button class="createbtn" onclick="openCreate()">+ Create New Voucher</button>
 
         <table class="usagetable">

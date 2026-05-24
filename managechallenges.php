@@ -10,7 +10,7 @@ $dbname = "assignment";
 $conn = mysqli_connect($servername, $username_db, $password_db, $dbname);
 if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
-// 删除 challenge
+// cancel challenge
 if (isset($_POST['delete_id'])) {
     $id = $_POST['delete_id'];
     mysqli_query($conn, "DELETE FROM challenge WHERE challenge_id = '$id'");
@@ -18,7 +18,7 @@ if (isset($_POST['delete_id'])) {
     exit();
 }
 
-// 编辑 challenge
+// edit challenge
 if (isset($_POST['edit_id'])) {
     $id          = $_POST['edit_id'];
     $description = $_POST['edit_description'];
@@ -33,7 +33,7 @@ if (isset($_POST['edit_id'])) {
     exit();
 }
 
-// 创建新 challenge
+// create challenge
 if (isset($_POST['new_description'])) {
     $description = $_POST['new_description'];
     $points      = $_POST['new_points'];
@@ -57,17 +57,15 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
     <title>Manage Challenges</title>
     <link rel="stylesheet" href="staffpage.css">
     <style>
-        /* ==========================================
-           1. 电脑端原本样式 (完全保留，不作任何变动)
-           ========================================== */
+    
         .manage-container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
+        max-width:90%;
+        margin-right:6%;
+        margin-left:6%;
         }
 
         .usagetable {
-            width: 100%;
+           
             border-collapse: collapse;
             margin-bottom: 40px;
         }
@@ -216,11 +214,8 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
             font-weight: bold;
         }
 
-        /* ==========================================
-           2. 手机/电话版适配样式 (小于 768px 时自动生效)
-           ========================================== */
+
         @media (max-width: 768px) {
-            /* 调整手机端外边距，与你的 header/footer 对齐 */
             .manage-container {
                 margin: 24px auto;
                 padding: 0 16px;
@@ -228,7 +223,6 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
                 box-sizing: border-box;
             }
 
-            /* 让标题和分割线在手机端缩进与大货一致 */
             .manage-container h1.a {
                 font-size: 22px;
                 margin-left: 0;
@@ -238,7 +232,6 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
                 margin-right: 0;
             }
 
-            /* 铺满宽度的创建按钮 */
             .createbtn {
                 width: 100%;
                 padding: 12px;
@@ -246,15 +239,14 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
                 margin-bottom: 16px;
             }
 
-            /* CRITICAL: 给表格套一层横向滚动，防止长表格把手机网页撑裂出现左右滑动的死角 */
             .usagetable {
                 display: block;
                 width: 100% !important;
                 overflow-x: auto;
-                -webkit-overflow-scrolling: touch; /* 让 iOS 滑动更流畅 */
-                white-space: nowrap; /* 确保表格内容在一行内不换行折叠 */
+                -webkit-overflow-scrolling: touch; 
+                white-space: nowrap; 
                 border: 1px solid rgba(255, 255, 255, 0.05);
-                background: #0d1526; /* 适配暗色网页底色 */
+                background: #0d1526; 
             }
 
             .usagetable th, .usagetable td {
@@ -262,20 +254,18 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
                 font-size: 13px;
             }
 
-            /* ===== 手机端模态框弹窗微调 ===== */
             .modal {
                 padding: 16px;
                 box-sizing: border-box;
             }
 
             .modal-box {
-                width: 100%; /* 宽度自动缩减为手机屏幕宽度 */
+                width: 100%; 
                 max-width: 400px;
                 padding: 20px;
                 background: #ffffff;
             }
 
-            /* 增大手机端输入框的触控面积 */
             .modal-box input,
             .modal-box textarea {
                 padding: 12px;
@@ -283,7 +273,6 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
                 margin-bottom: 12px;
             }
 
-            /* 手机端的弹窗底部的两个按钮对半分包裹 */
             .modal-buttons {
                 gap: 8px;
             }
@@ -298,10 +287,12 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
 </head>
 <body>
     <?php include 'userheader.php' ?>
-
+    <br><br>
+    <h1 class="a">Manage Challenges</h1>
+    <br>
     <div class="manage-container">
-        <h1 class="a">Manage Challenges</h1>
-        <hr>
+       
+        <hr><br><br>
 
         <button class="createbtn" onclick="openCreate()">+ Create New Challenge</button>
 
