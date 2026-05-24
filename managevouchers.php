@@ -225,7 +225,7 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
                 -webkit-overflow-scrolling: touch; 
                 white-space: nowrap;
                 background: #0d1526; 
-
+            }
             .usagetable th, .usagetable td {
                 padding: 10px 12px;
                 font-size: 13px;
@@ -316,13 +316,13 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
         <div class="modal-box">
             <h3>Edit Voucher</h3>
             <form action="managevouchers.php" method="post">
-                <input type="hidden" name="edit_id"          id="modal_id">
-                <input type="text"   name="edit_store"       id="modal_store"       placeholder="Store Name">
-                <textarea            name="edit_description" id="modal_description" placeholder="Description"></textarea>
-                <input type="text"   name="edit_discount"    id="modal_discount"    placeholder="Discount e.g. 10% off">
-                <input type="number" name="edit_points"      id="modal_points"      placeholder="Points Needed">
+                <input type="hidden" name="edit_id" id="modal_id">
+                <input type="text" name="edit_store" id="modal_store" placeholder="Store Name">
+                <textarea name="edit_description" id="modal_description" placeholder="Description"></textarea>
+                <input type="text" name="edit_discount" id="modal_discount" placeholder="Discount e.g. 10% off">
+                <input type="number" name="edit_points" id="modal_points" placeholder="Points Needed">
                 <div class="modal-buttons">
-                    <button class="createbtn"   type="submit">Save</button>
+                    <button class="createbtn" type="submit">Save</button>
                     <button class="cancelbtn" type="button" onclick="closeEdit()">Cancel</button>
                 </div>
             </form>
@@ -333,10 +333,10 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
         <div class="modal-box">
             <h3>Create New Voucher</h3>
             <form action="managevouchers.php" method="post">
-                <input type="text"   name="new_store"       placeholder="Store Name"               required>
-                <textarea            name="new_description" placeholder="Description"              required></textarea>
-                <input type="text"   name="new_discount"    placeholder="Discount e.g. 10% off"    required>
-                <input type="number" name="new_points"      placeholder="Points Needed"             required>
+                <input type="text" name="new_store" placeholder="Store Name" required>
+                <textarea name="new_description" placeholder="Description" required></textarea>
+                <input type="text" name="new_discount" placeholder="Discount e.g. 10% off" required>
+                <input type="number" name="new_points" placeholder="Points Needed" required>
                 <div class="modal-buttons">
                     <button class="createbtn" type="submit">Create</button>
                     <button class="cancelbtn" type="button" onclick="closeCreate()">Cancel</button>
@@ -347,11 +347,11 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
 
     <script>
         function openEdit(id, store, description, discount, points) {
-            document.getElementById('modal_id').value          = id;
-            document.getElementById('modal_store').value       = store;
+            document.getElementById('modal_id').value = id;
+            document.getElementById('modal_store').value = store;
             document.getElementById('modal_description').value = description;
-            document.getElementById('modal_discount').value    = discount;
-            document.getElementById('modal_points').value      = points;
+            document.getElementById('modal_discount').value = discount;
+            document.getElementById('modal_points').value = points;
             document.getElementById('editModal').classList.add('active');
         }
 

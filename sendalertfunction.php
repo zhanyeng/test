@@ -4,7 +4,7 @@ session_start();
 $conn = mysqli_connect("localhost", "root", "", "assignment");
 if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
-// 从列表页点击 Send Alert 进来，存入 session
+//store into session
 if (isset($_POST['from_list']) && $_POST['from_list'] == 1) {
     $_SESSION['room'] = $_POST['room'];
     $_SESSION['block'] = $_POST['block'];
@@ -13,7 +13,7 @@ if (isset($_POST['from_list']) && $_POST['from_list'] == 1) {
     $_SESSION['kwh'] = $_POST['kwh'];
 }
 
-// 按了 Confirm 按钮，写入数据库
+// when comfirn,send into database
 if (isset($_POST['confirm']) && $_POST['confirm'] == 1) {
     $desc = mysqli_real_escape_string($conn, $_POST['desc']);
     $room = $_SESSION['room'];
@@ -38,7 +38,7 @@ if (isset($_POST['confirm']) && $_POST['confirm'] == 1) {
     exit();
 }
 
-// 从 session 拿数据显示页面
+//get data from session
 $room = $_SESSION['room'] ?? '';
 $block = $_SESSION['block'] ?? '';
 $date = $_SESSION['date'] ?? '';

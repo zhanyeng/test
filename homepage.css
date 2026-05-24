@@ -16,7 +16,7 @@ body {
     animation:header 0.6s ease forwards;
 }
 @keyframes header {
-    from {opacity:0;transform:translateY(-100%)}
+    from {opacity:0;transform:translateY(-10deg)}
     to {opacity:1;transform:translateY(0)}
 }
 .header-content {
@@ -48,7 +48,7 @@ body {
     text-decoration:none;
     font-size:14px;
     font-weight:500;
-    border-radius:999px;
+    border-radius:25px;
     transition:.3s ease;
 }
 .login {
@@ -164,7 +164,7 @@ body {
     overflow:hidden;
     border:1px solid rgba(255,255,255,0.06);
     box-shadow:0 20px 60px rgba(0,0,0,0.45);
-    animation:img .9s .35s ease both;
+    animation:img 0.9s 0.35s ease both;
 }
 @keyframes img {
     from {opacity:0;transform:translateX(40px)}
@@ -193,7 +193,6 @@ body {
     font-size:24px;
 }
 .float-num {
-    font-family:'Arial Black',Arial,sans-serif;
     font-size:18px;
     font-weight:900;
     color:#00e87a;
@@ -216,19 +215,9 @@ body {
     color:#00e87a;
     margin-bottom:12px;
 }
-.section-label::before {
-    content:'';
-    display:block;
-    width:18px;
-    height:2px;
-    background:#00e87a;
-    border-radius:2px;
-}
+
 .section-title {
-    font-family:'Arial Black',Arial,sans-serif;
-    font-size:clamp(1.7rem,3vw,2.2rem);
     font-weight:900;
-    letter-spacing:-.5px;
     color:#eef2f8;
     line-height:1.15;
     margin-bottom:12px;
@@ -245,10 +234,7 @@ body {
     color:#eef2f8;
 }
 .function h2 {
-    font-family:'Arial Black',Arial,sans-serif;
-    font-size:clamp(1.6rem,3vw,2.2rem);
     font-weight:900;
-    letter-spacing:-.3px;
     color:#eef2f8;
 }
 .function p {
@@ -278,7 +264,7 @@ hr {
     border:1px solid rgba(255,255,255,0.06);
     border-radius:24px;
     padding:36px 28px;
-    transition:.35s ease;
+    transition:0.35s ease;
     position:relative;
     overflow:hidden;
 }
@@ -392,7 +378,7 @@ hr {
     padding:32px;
     width:52%;
     margin-top:24px;
-    transition:.35s ease;
+    transition:0.35s ease;
 }
 .info-box2 {
     margin-left:24%;
@@ -460,7 +446,7 @@ hr {
     border-radius:24px;
     padding:24px 16px;
     text-align:center;
-    transition:.35s ease;
+    transition:0.35s ease;
     position:relative;
     overflow:hidden;
     width:160px;
@@ -498,7 +484,7 @@ hr {
     font-size:11px;
     color:#4a5a78;
     margin:4px 0 12px;
-    letter-spacing:.5px;
+    letter-spacing:0.5px;
 }
 .rank-usage {
     font-size:20px;
@@ -556,11 +542,8 @@ hr {
     box-shadow:0 0 20px rgba(0,232,122,0.4);
 }
 
-/* ==========================================================================
-   2. 手机端自适应样式 (无全局变量、无局部变量、全去 !important 权重封锁版)
-   ========================================================================== */
+
 @media(max-width:768px) {
-    /* 通过 body 强制让全局视口物理锁死 */
     html, body {
         width: 100%;
         max-width: 100%;
@@ -569,14 +552,11 @@ hr {
         padding: 0;
     }
 
-    /* 精准限制水平线宽度 */
     body hr {
-        width: calc(100% - 32px);
         margin: 30px auto;
         box-sizing: border-box;
     }
 
-    /* 顶部导航栏自适应 */
     body .header-content {
         padding: 0 16px;
         height: 60px;
@@ -595,7 +575,6 @@ hr {
         box-sizing: border-box;
     }
 
-    /* 第一屏大图文区域（利用 body 选择器级联完美覆盖电脑端） */
     body .main-content {
         margin: 0;
         flex-direction: column;
@@ -653,7 +632,6 @@ hr {
         font-size: 18px;
     }
 
-    /* 主图与气泡 */
     body .image {
         width: 100%;
         max-width: 340px;
@@ -674,7 +652,6 @@ hr {
         box-sizing: border-box;
     }
 
-    /* 大标题间距 */
     body .function {
         padding: 40px 16px 0;
         width: 100%;
@@ -684,7 +661,6 @@ hr {
         font-size: 1.5rem;
     }
 
-    /* 三个主业务卡片区 */
     body .second-content {
         display: flex;
         flex-direction: column;
@@ -731,16 +707,13 @@ hr {
         box-sizing: border-box;
     }
 
-    /* 信息盒子网格 */
     body .info-section {
         padding: 0 16px 40px;
         gap: 16px;
         width: 100%;
         box-sizing: border-box;
     }
-    body .info-box, 
-    body .info-box2, 
-    body .info-box3 {
+    body .info-box, body .info-box2, body .info-box3 {
         width: 100%;
         max-width: 100%;
         margin-left: 0;
@@ -748,7 +721,6 @@ hr {
         box-sizing: border-box;
     }
 
-    /* 排行榜网格结构拍平 */
     body .rank-section {
         display: flex;
         flex-direction: column;
@@ -758,8 +730,7 @@ hr {
         max-width: 100%;
         box-sizing: border-box;
     }
-    body .rank-left, 
-    body .rank-right {
+    body .rank-left, body .rank-right {
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
@@ -778,7 +749,6 @@ hr {
         box-sizing: border-box;
     }
     
-    /* 右侧固定小卡片在手机端转普通卡片 */
     body .info-card {
         position: static;
         text-align: center;

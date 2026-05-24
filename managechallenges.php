@@ -26,8 +26,7 @@ if (isset($_POST['edit_id'])) {
     $deadline    = $_POST['edit_deadline'];
     $target      = $_POST['edit_target'];
 
-    mysqli_query($conn, "UPDATE challenge 
-                         SET description = '$description', points = '$points', deadline = '$deadline', target_kwh = '$target'
+    mysqli_query($conn, "UPDATE challenge  SET description = '$description', points = '$points', deadline = '$deadline', target_kwh = '$target'
                          WHERE challenge_id = '$id'");
     echo "<script>alert('Challenge updated successfully!'); window.location.href='managechallenges.php';</script>";
     exit();

@@ -357,7 +357,6 @@ hr {
         padding: 0 !important;
     }
 
-    /* ===== 标题区 ===== */
     .dashboard {
         font-size: 1.3rem;
         margin-left: 4%;
@@ -389,7 +388,6 @@ hr {
         margin-left: 4%;
     }
 
-    /* ===== 表格区 ===== */
     .usagebox, .joinedchallenges {
         margin: 16px 4% 24px;
         overflow-x: auto;
@@ -408,7 +406,6 @@ hr {
         white-space: nowrap;
     }
 
-    /* ===== Alert 按钮 ===== */
     .alertbutton {
         width: 100px;
         height: 36px;
@@ -421,7 +418,6 @@ hr {
         font-size: 11px;
     }
 
-    /* ===== Admin dashboard 提醒区 ===== */
     .all {
         flex-direction: column;
         align-items: flex-start;
@@ -438,7 +434,6 @@ hr {
         padding-right: 4%;
     }
 
-    /* ===== 挑战卡片 ===== */
     .cardlist {
         margin-left: 4%;
         margin-right: 4%;
@@ -460,7 +455,6 @@ hr {
         font-size: 11px;
     }
 
-    /* ===== 表单区 ===== */
     .add {
         margin-top: 16px;
         margin-bottom: 24px;

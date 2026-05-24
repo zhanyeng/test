@@ -9,7 +9,7 @@ $dbname = "assignment";
 $conn = mysqli_connect($servername, $username_db, $password_db, $dbname);
 if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
-// 删除用户
+// delete user
 if (isset($_POST['delete_id'])) {
     $id = $_POST['delete_id'];
     mysqli_query($conn, "DELETE FROM user WHERE user_id = '$id'");
@@ -17,7 +17,7 @@ if (isset($_POST['delete_id'])) {
     exit();
 }
 
-// 编辑用户
+// edit user
 if (isset($_POST['edit_id'])) {
     $id       = $_POST['edit_id'];
     $username = $_POST['edit_username'];
@@ -25,14 +25,13 @@ if (isset($_POST['edit_id'])) {
     $contact  = $_POST['edit_contact'];
     $role     = $_POST['edit_role'];
 
-    mysqli_query($conn, "UPDATE user 
-                         SET username = '$username', email = '$email', contact_number = '$contact', role = '$role'
-                         WHERE user_id = '$id'");
+    mysqli_query($conn, "UPDATE user SET username = '$username', email = '$email', contact_number = '$contact', role = '$role'
+                                        WHERE user_id = '$id'");
     echo "<script>alert('User information updated successfully!'); window.location.href='manageaccount.php';</script>";
     exit();
 }
 
-// 编辑 student information
+// edit student information
 if (isset($_POST['edit_student_id'])) {
     $id       = $_POST['edit_student_id'];
     $name     = $_POST['edit_name'];
@@ -41,14 +40,13 @@ if (isset($_POST['edit_student_id'])) {
     $room     = $_POST['edit_room'];
     $points   = $_POST['edit_points'];
 
-    mysqli_query($conn, "UPDATE student_information 
-                         SET name = '$name', tpnumber = '$tpnumber', dorm_block = '$block', room_number = '$room', points = '$points'
+    mysqli_query($conn, "UPDATE student_information  SET name = '$name', tpnumber = '$tpnumber', dorm_block = '$block', room_number = '$room', points = '$points'
                          WHERE id = '$id'");
     echo "<script>alert('Student information updated successfully!'); window.location.href='manageaccount.php';</script>";
     exit();
 }
 
-// 删除 student information
+// delets student information
 if (isset($_POST['delete_student_id'])) {
     $id = $_POST['delete_student_id'];
     mysqli_query($conn, "DELETE FROM student_information WHERE id = '$id'");
@@ -56,7 +54,7 @@ if (isset($_POST['delete_student_id'])) {
     exit();
 }
 
-// 搜索 user
+// search user
 $search = '';
 if (isset($_GET['search'])) {
     $search = $_GET['search'];
@@ -66,7 +64,7 @@ if (isset($_GET['search'])) {
 }
 $result = mysqli_query($conn, $query);
 
-// 搜索 student
+// search student
 $search_student = '';
 if (isset($_GET['search_student'])) {
     $search_student = $_GET['search_student'];

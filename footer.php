@@ -4,7 +4,6 @@
     border-top: 1px solid rgba(255,255,255,0.06);
     padding: 70px 40px 30px;
     margin-top: 0;
-    font-family: 'DM Sans', sans-serif;
     color: #eef2f8;
     box-sizing: border-box;
 }
@@ -13,14 +12,12 @@
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
     gap: 60px;
     margin-bottom: 48px;
     box-sizing: border-box;
 }
 
 .footer-brand .logo {
-    font-family: 'Syne', sans-serif;
     font-size: 20px;
     font-weight: 800;
     display: flex;
@@ -37,7 +34,6 @@
 }
 
 .footer-section h4 {
-    font-family: 'Syne', sans-serif;
     font-size: 13px;
     font-weight: 700;
     color: #eef2f8;
@@ -80,7 +76,6 @@
     color: #4a5a78;
 }
 .footer-bottom-logo {
-    font-family: 'Syne', sans-serif;
     font-size: 14px;
     font-weight: 700;
     color: #4a5a78;
@@ -89,7 +84,6 @@
     gap: 6px;
 }
 
-/* 移动端安全锁（去变量、去 !important 提升权重版） */
 @media (max-width: 768px) {
     body .footer { 
         padding: 40px 16px 24px; 
