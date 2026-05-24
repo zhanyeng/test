@@ -6,16 +6,7 @@ body {
     margin:0;
     padding: 0;
 }
-body::before {
-    content:'';
-    position:absolute;
-    top:-100px;
-    right:-80px;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle,rgba(0,232,122,0.11) 0,transparent 65%);
-    pointer-events:none;
-}
+
 
 .header {
     position:sticky;

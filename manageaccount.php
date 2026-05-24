@@ -223,6 +223,21 @@ $result_student = mysqli_query($conn, $query_student);
         .cancelbtn:hover {
             background-color: #888;
         }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto; 
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .usagetable {
+                min-width: 700px;
+            }
+            .search-bar input {
+                width: 100%; 
+            }
+        }
     </style>
 </head>
 <body>
@@ -230,10 +245,9 @@ $result_student = mysqli_query($conn, $query_student);
     <h1 class="a">Manage Account</h1>
     <BR>
     <div class="manage-container">
-
         
         <hr>
-<BR>
+        <BR>
         <form action="manageaccount.php" method="get">
             <div class="search-bar">
                 <input type="text" name="search" placeholder="Search by username, email or role..." value="<?php echo $search; ?>">
@@ -244,45 +258,47 @@ $result_student = mysqli_query($conn, $query_student);
             </div>
         </form>
 
-        <table class="usagetable">
-            <tr class="top">
-                <th>ID</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Contact</th>
-                <th>Role</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            <?php while ($row = mysqli_fetch_assoc($result)): ?>
-            <tr>
-                <td><?php echo $row['user_id']; ?></td>
-                <td><?php echo $row['username']; ?></td>
-                <td><?php echo $row['email']; ?></td>
-                <td><?php echo $row['contact_number']; ?></td>
-                <td><?php echo $row['role']; ?></td>
-                <td>
-                    <button class="editbtn" onclick="openEdit(
-                        '<?php echo $row['user_id']; ?>',
-                        '<?php echo $row['username']; ?>',
-                        '<?php echo $row['email']; ?>',
-                        '<?php echo $row['contact_number']; ?>',
-                        '<?php echo $row['role']; ?>'
-                    )">Edit</button>
-                </td>
-                <td>
-                    <form action="manageaccount.php" method="post" onsubmit="return confirm('Are you sure to delete <?php echo $row['username']; ?>?')">
-                        <input type="hidden" name="delete_id" value="<?php echo $row['user_id']; ?>">
-                        <button class="deletebtn" type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            <?php endwhile; ?>
-        </table>
+        <div class="table-wrapper">
+            <table class="usagetable">
+                <tr class="top">
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Role</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                <tr>
+                    <td><?php echo $row['user_id']; ?></td>
+                    <td><?php echo $row['username']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
+                    <td><?php echo $row['contact_number']; ?></td>
+                    <td><?php echo $row['role']; ?></td>
+                    <td>
+                        <button class="editbtn" onclick="openEdit(
+                            '<?php echo $row['user_id']; ?>',
+                            '<?php echo $row['username']; ?>',
+                            '<?php echo $row['email']; ?>',
+                            '<?php echo $row['contact_number']; ?>',
+                            '<?php echo $row['role']; ?>'
+                        )">Edit</button>
+                    </td>
+                    <td>
+                        <form action="manageaccount.php" method="post" onsubmit="return confirm('Are you sure to delete <?php echo $row['username']; ?>?')">
+                            <input type="hidden" name="delete_id" value="<?php echo $row['user_id']; ?>">
+                            <button class="deletebtn" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+            </table>
+        </div>
 
-        <!-- ===== STUDENT INFORMATION TABLE ===== -->
         <h1 class="a">Manage Student Information</h1>
         <hr>
+        <BR>
 
         <form action="manageaccount.php" method="get">
             <div class="search-bar">
@@ -294,48 +310,49 @@ $result_student = mysqli_query($conn, $query_student);
             </div>
         </form>
 
-        <table class="usagetable">
-            <tr class="top">
-                <th>ID</th>
-                <th>Name</th>
-                <th>TP Number</th>
-                <th>Block</th>
-                <th>Room Number</th>
-                <th>Points</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            <?php while ($row2 = mysqli_fetch_assoc($result_student)): ?>
-            <tr>
-                <td><?php echo $row2['id']; ?></td>
-                <td><?php echo $row2['name']; ?></td>
-                <td><?php echo $row2['tpnumber']; ?></td>
-                <td><?php echo $row2['dorm_block']; ?></td>
-                <td><?php echo $row2['room_number']; ?></td>
-                <td><?php echo $row2['points']; ?></td>
-                <td>
-                    <button class="editbtn" onclick="openEditStudent(
-                        '<?php echo $row2['id']; ?>',
-                        '<?php echo $row2['name']; ?>',
-                        '<?php echo $row2['tpnumber']; ?>',
-                        '<?php echo $row2['dorm_block']; ?>',
-                        '<?php echo $row2['room_number']; ?>',
-                        '<?php echo $row2['points']; ?>'
-                    )">Edit</button>
-                </td>
-                <td>
-                    <form action="manageaccount.php" method="post" onsubmit="return confirm('Are you sure to delete <?php echo $row2['name']; ?>?')">
-                        <input type="hidden" name="delete_student_id" value="<?php echo $row2['id']; ?>">
-                        <button class="deletebtn" type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            <?php endwhile; ?>
-        </table>
+        <div class="table-wrapper">
+            <table class="usagetable">
+                <tr class="top">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>TP Number</th>
+                    <th>Block</th>
+                    <th>Room Number</th>
+                    <th>Points</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <?php while ($row2 = mysqli_fetch_assoc($result_student)): ?>
+                <tr>
+                    <td><?php echo $row2['id']; ?></td>
+                    <td><?php echo $row2['name']; ?></td>
+                    <td><?php echo $row2['tpnumber']; ?></td>
+                    <td><?php echo $row2['dorm_block']; ?></td>
+                    <td><?php echo $row2['room_number']; ?></td>
+                    <td><?php echo $row2['points']; ?></td>
+                    <td>
+                        <button class="editbtn" onclick="openEditStudent(
+                            '<?php echo $row2['id']; ?>',
+                            '<?php echo $row2['name']; ?>',
+                            '<?php echo $row2['tpnumber']; ?>',
+                            '<?php echo $row2['dorm_block']; ?>',
+                            '<?php echo $row2['room_number']; ?>',
+                            '<?php echo $row2['points']; ?>'
+                        )">Edit</button>
+                    </td>
+                    <td>
+                        <form action="manageaccount.php" method="post" onsubmit="return confirm('Are you sure to delete <?php echo $row2['name']; ?>?')">
+                            <input type="hidden" name="delete_student_id" value="<?php echo $row2['id']; ?>">
+                            <button class="deletebtn" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+            </table>
+        </div>
 
     </div>
 
-    <!-- Edit User Modal -->
     <div class="modal" id="editModal">
         <div class="modal-box">
             <h3>Edit Account</h3>
@@ -357,7 +374,6 @@ $result_student = mysqli_query($conn, $query_student);
         </div>
     </div>
 
-    <!-- Edit Student Modal -->
     <div class="modal" id="editStudentModal">
         <div class="modal-box">
             <h3>Edit Student Information</h3>

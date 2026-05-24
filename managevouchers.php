@@ -57,6 +57,9 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
     <title>Manage Vouchers</title>
     <link rel="stylesheet" href="staffpage.css">
     <style>
+        /* ==========================================================================
+           1. 电脑端原本样式 (原封不动)
+           ========================================================================== */
         .manage-container {
             max-width: 1100px;
             margin: 40px auto;
@@ -190,6 +193,88 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
         .cancelbtn:hover {
             background-color: #c0392b;
         }
+
+        /* ==========================================================================
+           2. 移动端/电话版专门适配样式 (当检测到屏幕宽度小于 768px 时自动重写)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            .manage-container {
+                margin: 24px auto;
+                padding: 0 16px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* 让标题在手机端排版自适应 */
+            .manage-container h1.a {
+                font-size: 22px;
+                margin-left: 0;
+            }
+            .manage-container hr {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            /* 方便用手指触控，让添加按钮撑满屏幕宽度 */
+            .createbtn {
+                width: 100%;
+                padding: 12px;
+                font-size: 16px;
+                margin-bottom: 16px;
+                box-sizing: border-box;
+            }
+
+            /* 核心修改：让过宽的长表格在手机屏幕内支持横向划动，绝不撑爆整个网页 */
+            .usagetable {
+                display: block;
+                width: 100% !important;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch; /* 顺滑滚动 */
+                white-space: nowrap; /* 文本不换行 */
+                background: #0d1526; /* 统一暗色系背景防止露出白底 */
+            }
+
+            .usagetable th, .usagetable td {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+
+            /* 移动端弹窗盒子宽度自适应与边距调整 */
+            .modal {
+                padding: 16px;
+                box-sizing: border-box;
+            }
+
+            .modal-box {
+                width: 100%;
+                max-width: 400px;
+                padding: 20px;
+            }
+
+            /* 增加输入框在手机端的触碰高度 */
+            .modal-box input,
+            .modal-box textarea {
+                padding: 12px;
+                font-size: 15px;
+                margin-bottom: 12px;
+            }
+
+            /* 弹窗底部 Save 与 Cancel 按钮并排各占一半 */
+            .modal-buttons {
+                gap: 8px;
+            }
+            .modal-buttons button, 
+            .modal-buttons .createbtn, 
+            .modal-buttons .cancelbtn {
+                flex: 1;
+                width: auto;
+                margin-bottom: 0;
+                padding: 12px 0;
+                font-size: 14px;
+                text-align: center;
+                display: inline-block;
+            }
+        }
     </style>
 </head>
 <body>
@@ -238,7 +323,6 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
         </table>
     </div>
 
-    <!-- Edit Modal -->
     <div class="modal" id="editModal">
         <div class="modal-box">
             <h3>Edit Voucher</h3>
@@ -256,7 +340,6 @@ $result = mysqli_query($conn, "SELECT * FROM voucher ORDER BY points_needed ASC"
         </div>
     </div>
 
-    <!-- Create Modal -->
     <div class="modal" id="createModal">
         <div class="modal-box">
             <h3>Create New Voucher</h3>

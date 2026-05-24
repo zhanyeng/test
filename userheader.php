@@ -215,7 +215,6 @@ $current_user = $_SESSION['username'] ?? 'Guest';
         <a href="adminpage.php">🛠️ Dashboard</a>
         <a href="sendalertpage.php">🔔 Send Alert</a>
         <a href="publishvoucher.php">🎟️ Publish Voucher</a>
-        <a href="#settings">⚙️ Settings</a>
         <a href="homepage.php" style="color: #ff4d4d; border-top: 1px solid rgba(255,77,77,0.15);">🚪 Logout</a>
 
     <?php elseif ($role == 'manager'): ?>

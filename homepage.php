@@ -16,13 +16,12 @@ if (!$conn) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Voltcampus — Smart Campus Energy</title>
     <link rel="stylesheet" href="homepage.css">
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
     <div class="header-content">
         <h2 class="logo">⚡Voltcampus</h2>
@@ -33,7 +32,6 @@ if (!$conn) {
     </div>
 </div>
 
-<!-- HERO -->
 <div class="main-content">
     <div class="content1">
         <div class="smart">⚡ SMART ENERGY</div>
@@ -72,7 +70,6 @@ if (!$conn) {
     </div>
 </div>
 
-<!-- FEATURES -->
 <h2 class="function">📃 What We Offer</h2>
 
 
@@ -104,7 +101,6 @@ if (!$conn) {
 
 <hr>
 
-<!-- HOW IT WORKS -->
 <div class="how-section">
     <div class="how-section-inner">
         <div class="section-label">How It Works</div>
@@ -153,7 +149,6 @@ if (!$conn) {
 
 <hr>
 
-<!-- LEADERBOARD -->
 <div class="rank-section">
     <div class="rank-left">
         <div class="rank-header">
@@ -197,7 +192,6 @@ if (!$conn) {
 
 <hr>
 
-<!-- VOUCHERS -->
 <?php $vouchers = mysqli_query($conn, "SELECT * FROM voucher LIMIT 3"); ?>
 
 <div class="function">

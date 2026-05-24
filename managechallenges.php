@@ -57,6 +57,9 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
     <title>Manage Challenges</title>
     <link rel="stylesheet" href="staffpage.css">
     <style>
+        /* ==========================================
+           1. 电脑端原本样式 (完全保留，不作任何变动)
+           ========================================== */
         .manage-container {
             max-width: 1100px;
             margin: 40px auto;
@@ -188,6 +191,7 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
         .cancelbtn:hover {
             background-color: #c0392b;
         }
+        
         .createbtn2{
             background-color: #2ecc71;
             color: white;
@@ -197,11 +201,11 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
             cursor: pointer;
             font-weight: bold;
         }
+        
         .createbtn2:hover {
             background-color: #27ae60;
         }
         
-
         .expired {
             color: red;
             font-weight: bold;
@@ -210,6 +214,85 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
         .active-challenge {
             color: green;
             font-weight: bold;
+        }
+
+        /* ==========================================
+           2. 手机/电话版适配样式 (小于 768px 时自动生效)
+           ========================================== */
+        @media (max-width: 768px) {
+            /* 调整手机端外边距，与你的 header/footer 对齐 */
+            .manage-container {
+                margin: 24px auto;
+                padding: 0 16px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* 让标题和分割线在手机端缩进与大货一致 */
+            .manage-container h1.a {
+                font-size: 22px;
+                margin-left: 0;
+            }
+            .manage-container hr {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            /* 铺满宽度的创建按钮 */
+            .createbtn {
+                width: 100%;
+                padding: 12px;
+                font-size: 16px;
+                margin-bottom: 16px;
+            }
+
+            /* CRITICAL: 给表格套一层横向滚动，防止长表格把手机网页撑裂出现左右滑动的死角 */
+            .usagetable {
+                display: block;
+                width: 100% !important;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch; /* 让 iOS 滑动更流畅 */
+                white-space: nowrap; /* 确保表格内容在一行内不换行折叠 */
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                background: #0d1526; /* 适配暗色网页底色 */
+            }
+
+            .usagetable th, .usagetable td {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+
+            /* ===== 手机端模态框弹窗微调 ===== */
+            .modal {
+                padding: 16px;
+                box-sizing: border-box;
+            }
+
+            .modal-box {
+                width: 100%; /* 宽度自动缩减为手机屏幕宽度 */
+                max-width: 400px;
+                padding: 20px;
+                background: #ffffff;
+            }
+
+            /* 增大手机端输入框的触控面积 */
+            .modal-box input,
+            .modal-box textarea {
+                padding: 12px;
+                font-size: 15px;
+                margin-bottom: 12px;
+            }
+
+            /* 手机端的弹窗底部的两个按钮对半分包裹 */
+            .modal-buttons {
+                gap: 8px;
+            }
+            .modal-buttons button {
+                flex: 1;
+                padding: 12px 0;
+                font-size: 14px;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -220,10 +303,8 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
         <h1 class="a">Manage Challenges</h1>
         <hr>
 
-        <!-- 创建按钮 -->
         <button class="createbtn" onclick="openCreate()">+ Create New Challenge</button>
 
-        <!-- Challenges 列表 -->
         <table class="usagetable">
             <tr class="top">
                 <th>ID</th>
@@ -269,7 +350,6 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
         </table>
     </div>
 
-    <!-- Edit Modal -->
     <div class="modal" id="editModal">
         <div class="modal-box">
             <h3>Edit Challenge</h3>
@@ -287,14 +367,13 @@ $result = mysqli_query($conn, "SELECT * FROM challenge ORDER BY deadline ASC");
         </div>
     </div>
 
-    <!-- Create Modal -->
     <div class="modal" id="createModal">
         <div class="modal-box">
             <h3>Create New Challenge</h3>
             <form action="managechallenges.php" method="post">
                 <textarea            name="new_description"  placeholder="Description" required></textarea>
                 <input type="number" name="new_points"       placeholder="Points"      required>
-                <input type="date"   name="new_deadline"                               required>
+                <input type="date"   name="new_deadline"                                required>
                 <input type="number" name="new_target"       placeholder="Target kWh"  step="0.01" required>
                 <div class="modal-buttons">
                     <button class="createbtn2" type="submit">Create</button>

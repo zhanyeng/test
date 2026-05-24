@@ -2,7 +2,6 @@ body {
     background-color: #080e1a;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     overflow-x: hidden;
 }
 
@@ -10,7 +9,6 @@ body {
     text-align: center;
     margin-top: 40px;
     margin-bottom: 20px;
-    font-family: 'Arial Black', Arial, sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 900;
     color: #eef2f8;
@@ -63,19 +61,7 @@ body {
     box-sizing: border-box;
 }
 
-/* 顶部极光霓虹边框效果 */
-.lian::before, .limbin::before, .sadra::before, .lau::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #00e87a, #38d9f5);
-    opacity: 0.8;
-}
 
-/* 卡片悬浮特效 */
 .lian:hover, .limbin:hover, .sadra:hover, .lau:hover {
     border-color: rgba(0, 232, 122, 0.3);
     background: #152340;
@@ -93,7 +79,6 @@ body {
     flex: 1;
 }
 
-/* 文本行排版 */
 .name-row, .position-row {
     display: flex;
     gap: 8px;
@@ -150,7 +135,7 @@ body {
 }
 
 .lianpicture:hover, .limbinpicture:hover, .sadrapicture:hover, .laupicture:hover {
-    transform: scale(1.05) rotate(3deg);
+    transform: scale(1.05) ;
     border-color: #00e87a;
 }
 

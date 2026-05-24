@@ -1,3 +1,4 @@
+
 body {
     background-color:#080e1a;
     color:#eef2f8;
@@ -173,7 +174,6 @@ body {
 .image img {
     width:100%;
     height:100%;
-  
 }
 .float-badge {
     position:absolute;
@@ -556,155 +556,239 @@ hr {
     box-shadow:0 0 20px rgba(0,232,122,0.4);
 }
 
+/* ==========================================================================
+   2. 手机端自适应样式 (无全局变量、无局部变量、全去 !important 权重封锁版)
+   ========================================================================== */
 @media(max-width:768px) {
-    .header-content {
-        padding: 0 16px;
-        height: 60px;
-    }
-    .logo {
-        font-size: 18px;
-    }
-    .header-links {
-        gap: 6px;
-        max-width: 200px;
-    }
-    .header-links a {
-        padding: 6px 14px;
-        font-size: 12px;
+    /* 通过 body 强制让全局视口物理锁死 */
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
     }
 
-    .main-content {
-        margin:0px;
+    /* 精准限制水平线宽度 */
+    body hr {
+        width: calc(100% - 32px);
+        margin: 30px auto;
+        box-sizing: border-box;
+    }
+
+    /* 顶部导航栏自适应 */
+    body .header-content {
+        padding: 0 16px;
+        height: 60px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    body .logo {
+        font-size: 18px;
+    }
+    body .header-links {
+        gap: 6px;
+    }
+    body .header-links a {
+        padding: 6px 12px;
+        font-size: 12px;
+        box-sizing: border-box;
+    }
+
+    /* 第一屏大图文区域（利用 body 选择器级联完美覆盖电脑端） */
+    body .main-content {
+        margin: 0;
         flex-direction: column;
         min-height: auto;
         gap: 24px;
-        max-width: 768px;
+        width: 100%;
+        max-width: 100%;
+        padding: 30px 16px;
+        overflow: hidden;
+        box-sizing: border-box;
     }
-    .main-content::before {
+    body .main-content::before {
         display: none;
     }
-    .content1 {
+
+    body .content1 {
         width: 100%;
-    }
-    .content1 h1 {
-        font-size: 2.2rem;
-        margin-bottom: 16px;
-    }
-    .content1 p {
         max-width: 100%;
-        font-size: 14px;
-        padding: 0 10px;
-    }
-    .content1 .header-links {
-        justify-content: center;
-        margin-top: 24px;
-    }
-    
-    .hero-stats {
-        justify-content: space-between;
-        gap: 12px;
-        margin-top: 32px;
-        padding-top: 24px;
-    }
-    .stat-item {
-        flex: 1;
-    }
-    .stat-num {
-        font-size: 20px;
-    }
-
-    .image {
-        width: 100%;
-        max-width: 380px;
-        border-radius: 20px;
-        margin: 0 auto;
-    }
-    .float-badge {
-        padding: 8px 12px;
-        border-radius: 10px;
-        left: 12px;
-        bottom: 12px;
-    }
-    .float-icon {
-        font-size: 18px;
-    }
-    .float-num {
-        font-size: 15px;
-    }
-
-    /* 模块统一标题 */
-    .function {
-        padding: 48px 20px 0;
-    }
-    .function h2 {
-        font-size: 1.6rem;
-    }
-
-    /* 卡片式服务/礼券区 */
-    .second-content {
+        display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 24px 20px 48px;
-        gap: 16px;
+        text-align: center;
+        box-sizing: border-box;
     }
-    .Electricity-consumption, .challenge, .reward {
+    body .content1 h1 {
+        font-size: 2.0rem;
+        margin-bottom: 12px;
+        text-align: center;
+        width: 100%;
+    }
+    body .content1 p {
+        width: 100%;
+        max-width: 100%;
+        font-size: 14px;
+        padding: 0 8px;
+        text-align: center;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    body .content1 .header-links {
+        justify-content: center;
+        margin-top: 20px;
+        width: 100%;
+    }
+    
+    body .hero-stats {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+        margin-top: 24px;
+        padding-top: 20px;
+        box-sizing: border-box;
+    }
+    body .stat-num {
+        font-size: 18px;
+    }
+
+    /* 主图与气泡 */
+    body .image {
+        width: 100%;
+        max-width: 340px;
+        border-radius: 16px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    body .image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    body .float-badge {
+        padding: 6px 10px;
+        border-radius: 8px;
+        left: 10px;
+        bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    /* 大标题间距 */
+    body .function {
+        padding: 40px 16px 0;
         width: 100%;
         box-sizing: border-box;
-        padding: 28px 20px;
-        flex: unset;
+    }
+    body .function h2 {
+        font-size: 1.5rem;
     }
 
-    /* 步骤区 */
-    .how-section {
-        padding: 48px 20px;
-    }
-    .how-grid {
-        grid-template-columns: 1fr;
-        margin-top: 32px;
-        gap: 1px; /* 保持原本内部间隙边框 */
-    }
-    .how-card {
-        padding: 28px 20px;
-    }
-
-    /* 信息提示区（去除电脑端的百分比偏移错落） */
-    .info-section {
-        padding: 0 20px 48px;
+    /* 三个主业务卡片区 */
+    body .second-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 16px 40px;
         gap: 16px;
-    }
-    .info-box, .info-box2, .info-box3 {
         width: 100%;
-        margin-left: 0 !important; /* 强制覆盖 info-box2 和 3 的左边距 */
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    body .Electricity-consumption, 
+    body .challenge, 
+    body .reward {
+        width: 100%;
+        max-width: 100%;
+        padding: 24px 16px;
+        flex: none;
+        box-sizing: border-box;
+    }
+
+    /* 3步保存区域 */
+    body .how-section {
+        padding: 40px 16px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    body .how-grid {
+        display: flex;
+        flex-direction: column;
+        margin-top: 24px;
+        gap: 16px; 
+        background: transparent;
+        border-radius: 0;
+        overflow: visible;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    body .how-card {
+        padding: 24px 16px;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.06);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* 信息盒子网格 */
+    body .info-section {
+        padding: 0 16px 40px;
+        gap: 16px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    body .info-box, 
+    body .info-box2, 
+    body .info-box3 {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
         margin-top: 0;
         box-sizing: border-box;
     }
 
-    /* 排行榜区 */
-    .rank-section {
-        padding: 0 20px 48px;
-        grid-template-columns: 1fr;
-        gap: 40px;
+    /* 排行榜网格结构拍平 */
+    body .rank-section {
+        display: flex;
+        flex-direction: column;
+        padding: 0 16px 40px;
+        gap: 32px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
-    .rank-steps {
+    body .rank-left, 
+    body .rank-right {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    body .rank-steps {
         flex-direction: column;
         align-items: center;
-        gap: 16px;
-    }
-    .rank-card {
+        gap: 12px;
         width: 100%;
-        max-width: 320px;
-        margin-bottom: 0 !important; /* 去除原本高低错落的底部间距 */
+        box-sizing: border-box;
+    }
+    body .rank-card {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 0;
         box-sizing: border-box;
     }
     
-    /* 右侧排行榜说明卡片 */
-    .info-card {
+    /* 右侧固定小卡片在手机端转普通卡片 */
+    body .info-card {
         position: static;
         text-align: center;
-        padding: 28px 20px;
-        border-radius: 24px;
+        padding: 24px 16px;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
-    .info-btn {
+    body .info-btn {
         align-self: center;
         width: 100%;
         justify-content: center;
