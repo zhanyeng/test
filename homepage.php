@@ -161,13 +161,13 @@ if (!$conn) {
             //search top 3 dorm block and room number with lowest electricity usage in the past week//
             $leaderboard = mysqli_query($conn, "
                 SELECT dorm_block, room_number, SUM(usage_kwh) AS total_kwh
-                FROM electric_usageWHERE record_date BETWEEN '" . 
+                FROM electric_usage WHERE record_date BETWEEN '" . 
                 date('Y-m-d', strtotime('monday last week')) . "'  AND '" . date('Y-m-d', strtotime('sunday last week')) . "' 
                 GROUP BY dorm_block, room_number
                 ORDER BY total_kwh ASC LIMIT 3 ");
             $medals = ['🥇', '🥈', '🥉'];
             $i = 0;
-            while ($row = mysqli_fetch_assoc($leaderboard)):// Loop through top 3 results and display rank cards
+            while ($row = mysqli_fetch_assoc($leaderboard)):// Loop through top 3 results and display rank cards//
             ?>
 
             <!-- Each rank card shows the medal, dorm block, room number, and total kWh used in the past week -->
