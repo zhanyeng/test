@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// 1. 连接数据库
 $servername = "localhost";
 $username_db = "root";
 $password_db = "";
@@ -13,32 +12,25 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// 获取当前从注册/登录页面传过来的用户名，如果没有则默认为 Guest
 $name = $_SESSION['username'] ?? ($_GET['name'] ?? 'Guest');
 
-// 2. 检查用户是否点击了保存按钮
 if (isset($_POST['btnSave'])) {
 
-    // 接收表单提交过来的数据
     $name = $_POST['username']; 
     $tpnumber = $_POST['tpnumber'];
-    $dorm = $_POST['block'];      // 🎯 修复 HTML 属性后，这里能完美拿到 "Block A/B/C" 了
+    $dorm = $_POST['block'];      
     $room = $_POST['roomnumber'];
 
-    /* * 🎯 核心修复点 1：把数据完整同步到 Session 中
-     * 这样跳转到 studentpage.php 后，主页和 userheader 就能立刻读取，免去再次查询数据库
-     */
-    $_SESSION['username'] = $name;
-    $_SESSION['roomnumber'] = $room;   // 传递房间号给主页
-    $_SESSION['dormblock'] = $dorm;    // 🎯 成功将选中的宿舍楼存入 Session，解决主页显示 xxxxx 的问题
-    $_SESSION['role'] = 'student';     // 🎯 激活学生角色，让侧边栏 Menu 菜单正常展开
 
-    // 3. 写入数据库 student_information 表
+    $_SESSION['username'] = $name;
+    $_SESSION['roomnumber'] = $room; 
+    $_SESSION['dormblock'] = $dorm; 
+    $_SESSION['role'] = 'student';    
+
     $sql = "INSERT INTO student_information (name, tpnumber, dorm_block, room_number) 
             VALUES ('$name', '$tpnumber', '$dorm', '$room')";
 
     if (mysqli_query($conn, $sql)) {
-        // 提示成功并利用 JavaScript 重定向跳转
         echo "<script>alert('Profile saved successfully!'); window.location.href='studentpage.php';</script>";
         exit();
     } else {
