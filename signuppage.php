@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "assignment"; 
+$servername ="localhost";
+$username ="root";
+$password ="";
+$dbname ="assignment"; 
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -13,18 +13,20 @@ if (!$conn) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user    = $_POST['username'];
-    $pass    = $_POST['password']; 
-    $email   = $_POST['email'];
+    $user = $_POST['username'];
+    $pass = $_POST['password']; 
+    $email = $_POST['email'];
     $contact = $_POST['contact_number'];
-    $role    = $_POST['role'];
+    $role = $_POST['role'];
 
+    // Check if username already exists or not//
     $check = mysqli_query($conn, "SELECT * FROM user WHERE username = '$user'");
     if (mysqli_num_rows($check) > 0) {
         echo "<script>alert('Username already taken, please choose another one.'); window.location.href='signuppage.php';</script>";
         exit();
     }
 
+    // Insert new user into the database//
     $sql = "INSERT INTO user (username, password, email, contact_number, role) 
             VALUES ('$user', '$pass', '$email', '$contact', '$role')";
 
@@ -32,15 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $user;
         
         if ($role == "student") {
-            echo "<script>
-                    alert('you need to complete your information'); 
-                    window.location.href='studentinformation.php';
-                  </script>";
+            echo "<script>alert('you need to complete your information'); window.location.href='studentinformation.php';</script>";
         } else {
-            echo "<script>
-                    alert('Account created successfully!'); 
-                    window.location.href='loginpage.php';
-                  </script>";
+            echo "<script>alert('Account created successfully!'); window.location.href='loginpage.php';</script>";
         }
     } else {
         echo "Error: " . mysqli_error($conn);

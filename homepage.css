@@ -7,9 +7,9 @@ body {
 }
 
 .header {
-    position:sticky;
-    top:0;
-    z-index:1000;
+    position:sticky;  /*make sure the header aways at the top of the page*/
+    top:0;  /*stick to the top*/
+    z-index:1000;  /*make sure the header is above other content*/
     width:100%;
     border-bottom:1px solid rgba(255,255,255,0.06);
     animation:header 0.6s ease forwards;
@@ -84,14 +84,14 @@ body {
     padding:80px 40px;
     position:relative;
 }
-.main-content::before {
+.main-content::before {  /*MAKE SURE THE GRADIENT EFFECT IS BELOW THE CONTENT*/
     content:'';
-    position:absolute;
+    position:absolute;  /*position it absolutely within the main content container*/
     top:-100px;
     right:-80px;
     width:600px;
     height:600px;
-    background:radial-gradient(circle,rgba(0,232,122,0.11) 0,transparent 65%);
+    background:radial-gradient(circle,rgba(0,232,122,0.11) 0,transparent 65%);  /*subtle green glow*/
     pointer-events:none;
 }
 .content1 {

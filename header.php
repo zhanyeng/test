@@ -2,16 +2,16 @@
 body {
     background-color:#080e1a;
     color:#eef2f8;
-    overflow-x:hidden;
+    overflow-x:hidden; /*make sure no over the page*/
     margin:0;
     padding: 0;
 }
 
 
 .header {
-    position:sticky;
-    top:0;
-    z-index:1000;
+    position:sticky;    /*make sure the header aways at the top of the page*/
+    top:0;  /*stick to the top*/
+    z-index:1000;  /*make sure the header is above other content*/
     width:100%;
     border-bottom:1px solid rgba(255,255,255,0.06);
     animation:header 0.6s ease forwards;

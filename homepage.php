@@ -157,18 +157,20 @@ if (!$conn) {
         </div>
         <div class="rank-steps">
             <?php
+
+            //search top 3 dorm block and room number with lowest electricity usage in the past week//
             $leaderboard = mysqli_query($conn, "
                 SELECT dorm_block, room_number, SUM(usage_kwh) AS total_kwh
-                FROM electric_usage
-                WHERE record_date BETWEEN '" . date('Y-m-d', strtotime('monday last week')) . "'
-                  AND '" . date('Y-m-d', strtotime('sunday last week')) . "'
+                FROM electric_usageWHERE record_date BETWEEN '" . 
+                date('Y-m-d', strtotime('monday last week')) . "'  AND '" . date('Y-m-d', strtotime('sunday last week')) . "' 
                 GROUP BY dorm_block, room_number
-                ORDER BY total_kwh ASC LIMIT 3
-            ");
+                ORDER BY total_kwh ASC LIMIT 3 ");
             $medals = ['🥇', '🥈', '🥉'];
             $i = 0;
-            while ($row = mysqli_fetch_assoc($leaderboard)):
+            while ($row = mysqli_fetch_assoc($leaderboard)):// Loop through top 3 results and display rank cards
             ?>
+
+            <!-- Each rank card shows the medal, dorm block, room number, and total kWh used in the past week -->
             <div class="rank-card rank-<?php echo $i; ?>">
                 <div class="rank-medal"><?php echo $medals[$i]; ?></div>
                 <div class="rank-dorm"><?php echo htmlspecialchars($row['dorm_block']); ?></div>
@@ -192,13 +194,13 @@ if (!$conn) {
 
 <hr>
 
-<?php $vouchers = mysqli_query($conn, "SELECT * FROM voucher LIMIT 3"); ?>
+<?php $vouchers = mysqli_query($conn, "SELECT * FROM voucher LIMIT 3"); ?> <!-- search top 3 voucher form voucher table -->
 
 <div class="function">
     <h2>Available Vouchers ‼️</h2>
     <p>Earn points through challenges and redeem them for real rewards. New vouchers added every week.</p>
 </div>
-
+<!--show voucher-->
 <div class="second-content">
     <?php while ($row = mysqli_fetch_assoc($vouchers)): ?>
     <div class="Electricity-consumption" style="text-align:center;">

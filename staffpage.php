@@ -59,10 +59,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <th>📅Date</th>
                 </tr>
                 <?php
+                //search all the electric usage data order by date from database//
                     $allusage = mysqli_query($conn, "SELECT * FROM electric_usage ORDER BY record_date DESC");
                     while ($row3 = mysqli_fetch_assoc($allusage)):
                 ?>
                 <tr>
+                    <!--show the dorm block, room number, student name, electricity usage and date. if the usage is more than 20 kWh, show the usage in red color -->
                     <td color:white><?php echo $row3['dorm_block']; ?></td>
                     <td><?php echo $row3['room_number']; ?></td>
                     <td><?php echo $row3['username']; ?></td>
@@ -89,6 +91,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <th>progress</th>
 
                 <?php 
+                //search all the joined challenges data from database//
                     $joinedc = mysqli_query($conn,"SELECT * FROM challenge_participation");
                     while ($row4 = mysqli_fetch_assoc($joinedc)):
                 ?>
@@ -99,6 +102,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <td><?php echo $row4['challenge_id'];?></td>
                     <td >
                         <?php 
+                        //if the points_given is 1, show "Done", if the points_given is 0, show "Not Done"//
                             if($row4['points_given'] == 1){
                                 echo 'Done'; 
                             }else{ echo 'Not Done';} 
@@ -116,6 +120,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     <div class="cardlist">
         <?php
+        //search all the challenges data from database//
         $allchallenge = mysqli_query($conn, "SELECT * FROM challenge");
         while ($row2 = mysqli_fetch_assoc($allchallenge)):
         ?>

@@ -15,18 +15,18 @@ if (!$conn) {
 $name = $_SESSION['username'] ?? ($_GET['name'] ?? 'Guest');
 
 if (isset($_POST['btnSave'])) {
-
+    // Get student information from the form//
     $name = $_POST['username']; 
     $tpnumber = $_POST['tpnumber'];
     $dorm = $_POST['block'];      
     $room = $_POST['roomnumber'];
 
-
+    // Store student information in session variables for later use//
     $_SESSION['username'] = $name;
     $_SESSION['roomnumber'] = $room; 
     $_SESSION['dormblock'] = $dorm; 
     $_SESSION['role'] = 'student';    
-
+    // Insert student information into the database//
     $sql = "INSERT INTO student_information (name, tpnumber, dorm_block, room_number) 
             VALUES ('$name', '$tpnumber', '$dorm', '$room')";
 
